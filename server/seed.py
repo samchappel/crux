@@ -1,17 +1,18 @@
 
 from random import choice as rc, randint
-from faker import Faker
+#from faker import Faker
 from app import app
-from models import db, Climber, Location, Route, Review, db
+from models import db, Climber, Location, Route, Review
 
-fake = Faker()
+#fake = Faker()
 
 # CLIMBER, LOCATION, ROUTE, REVIEW(JOIN TABLE)
 
 # Delete all existing data
 print('deleting all data')
-db.drop_all()
-db.create_all()
+with app.app_context():
+    db.drop_all()
+    db.create_all()
 print('all data deleted')
 # Climber data
 
@@ -24,9 +25,23 @@ climbers = [
 print('climbers created')
 
 # Add climbers to database
-for climber in climbers:
-    new_climber = Climber(**climber)
-    db.session.add(new_climber)
+def make_climbers():
+
+    Climber.query.delete()
+
+    climbers = []
+
+    for climber_dict in climbers:
+        climber = Climber(
+            name=climber_dict["name"],
+            style=climber_dict["style"],
+            grade=climber_dict["grade"],
+            image=climber_dict["image"],
+            location_id=climber_dict["location_id"]
+        )
+        climbers.append(climber)
+
+    db.session.add_all(climbers)
     db.session.commit()
 print('climbers committed')
 # Location data
@@ -40,9 +55,23 @@ locations = [
 print('locations created')
 
 # Add locations to database
-for location in locations:
-    new_location = Location(**location)
-    db.session.add(new_location)
+def make_locations():
+
+    Location.query.delete()
+
+    locations = []
+
+    for location_dict in locations:
+        location = Location(
+            name=location_dict["name"],
+            style=location_dict["style"],
+            grade=location_dict["grade"],
+            image=location_dict["image"],
+            location_id=location_dict["location_id"]
+        )
+        locations.append(location)
+
+    db.session.add_all(locations)
     db.session.commit()
 print('locations committed')
 
@@ -50,33 +79,61 @@ print('locations committed')
 print('creating routes')
 routes = [    
     {"name": "To Bolt or Not to Be", "style": "Sport", "grade": "5.14a", "image": "https://cdn-files.apstatic.com/climb/110017364_medium_1494317655.jpg", "location_id": 1},    
-    {"name": "The Mandala", "style": "Bouldering", "grade": "V12", "image": "https://cdn-files.apstatic.com/climb/111781832_medium_1494317576.jpg"},    
-    {"name": "The Chief", "style": "Trad", "grade": "5.11c", "image": "https://cdn-files.apstatic.com/climb/110015987_medium_1494317341.jpg"},    
-    {"name": "El Capitan", "style": "Multi-pitch", "grade": "5.13d", "image": "https://www.outsideonline.com/wp-content/uploads/2021/06/10/El-Cap-Wall_Tristan-Gauthier_Unsplash.jpg"},    
-    {"name": "The Nose", "style": "Multi-pitch", "grade": "5.14a", "image": "https://www.climbing.com/.image/t_share/MTY1MTA1NDYyMjIyNzg0OTM2/el-capitan-the-nose.jpg"},    
-    {"name": "Biographie", "style": "Sport", "grade": "5.15a", "image": "https://cdn-cms.f-static.net/uploads/2369633/800_5d868889f6d74.jpg"}]
+    {"name": "The Mandala", "style": "Bouldering", "grade": "V12", "image": "https://cdn-files.apstatic.com/climb/111781832_medium_1494317576.jpg", "location_id": 1},    
+    {"name": "The Chief", "style": "Trad", "grade": "5.11c", "image": "https://cdn-files.apstatic.com/climb/110015987_medium_1494317341.jpg", "location_id": 1},    
+    {"name": "El Capitan", "style": "Multi-pitch", "grade": "5.13d", "image": "https://www.outsideonline.com/wp-content/uploads/2021/06/10/El-Cap-Wall_Tristan-Gauthier_Unsplash.jpg", "location_id": 3},    
+    {"name": "The Nose", "style": "Multi-pitch", "grade": "5.14a", "image": "https://www.climbing.com/.image/t_share/MTY1MTA1NDYyMjIyNzg0OTM2/el-capitan-the-nose.jpg", "location_id": 2},    
+    {"name": "Biographie", "style": "Sport", "grade": "5.15a", "image": "https://cdn-cms.f-static.net/uploads/2369633/800_5d868889f6d74.jpg", "location_id": 4} ]
 print('routes created')
 
 # Add routes to database
-for route in routes:
-    new_route = Route(**route)
-    db.session.add(new_route)
+def make_routes():
+
+    Route.query.delete()
+
+    routes = []
+
+    for route_dict in routes:
+        route = Route(
+            name=route_dict["name"],
+            style=route_dict["style"],
+            grade=route_dict["grade"],
+            image=route_dict["image"],
+            location_id=route_dict["location_id"]
+        )
+        routes.append(route)
+
+    db.session.add_all(routes)
     db.session.commit()
 print('routes committed')
 
 print('creating reviews')
 # Review data
 reviews = [
-    {"star_rating": 5, "safety_rating": 4, "quality_rating": 5, "comment": "Awesome climb!"},
-    {"star_rating": 4, "safety_rating": 3, "quality_rating": 4, "comment": "Difficult problem, but rewarding."},
-    {"star_rating": 3, "safety_rating": 4, "quality_rating": 3, "comment": "Good climb, but overrated in my opinion."}
+    {"star_rating": 5, "safety_rating": 4, "quality_rating": 5, "comment": "Awesome climb!", "climber_id": 1, "route_id": 1},
+    {"star_rating": 4, "safety_rating": 3, "quality_rating": 4, "comment": "Difficult problem, but rewarding.", "climber_id": 2, "route_id": 2},
+    {"star_rating": 3, "safety_rating": 4, "quality_rating": 3, "comment": "Good climb, but overrated in my opinion.", "climber_id": 3, "route_id": 3}
 ]
 print('review created')
 
 # Add reviews to database
-for review in reviews:
-    new_review = Review(**review)
-    db.session.add(new_review)
+def make_reviews():
+
+    Review.query.delete()
+
+    reviews = []
+
+    for review_dict in reviews:
+        review = Review(
+            name=review_dict["name"],
+            style=review_dict["style"],
+            grade=review_dict["grade"],
+            image=review_dict["image"],
+            location_id=review_dict["location_id"]
+        )
+        reviews.append(review)
+
+    db.session.add_all(reviews)
     db.session.commit()
 print('review created')
 
