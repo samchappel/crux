@@ -1,13 +1,130 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background-color: #88837e;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* border: 1px solid #333; */
+  padding: 15px 20px 18px 18px;
+  border-radius: 5px;
+  /* box-shadow: 2px 5px 5px #333; */
+  background-image: url("../public/team-lynn-hill-climbing.jpg");
+  background-repeat: no-repeat;
+  background-size: 90%;
+  background-position: top center;
+  width: 70%;
+  height: 400px;
+  margin: 0 auto;
+}
+
+.crux {
+  color: #335364;
+  text-shadow: white 0px 0px 2px;
+  font-size: 60px;
+  font-family: "Titillium Web", sans-serif;
+}
+.crux-subheader {
+  color: #c5bfb5;
+  text-shadow: black 0px 0px 2px;
+  font-size: 25px;
+  font-family: "Titillium Web", sans-serif;
+}
+
+main {
+  padding: 0 1rem;
+  background-color: #b2b2ad;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #335364;
+  height: 50px;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+  height: 100%;
+}
+
+.nav-bar a {
+  color: #cad0cf;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: "Titillium Web", sans-serif;
+  padding: 10px;
+}
+
+.nav-bar a:hover {
+  color: #c5bfb5;
+}
+
+#form-wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+label {
+  font-family: "Titillium Web", sans-serif;
+  color: #d9c4b4;
+}
+
+input {
+  height: 30px;
+  width: 100%;
+  margin: 3px;
+  border: 1px solid #bbc0c6;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+button, [type="submit"] {
+  cursor: pointer;
+  background-color: #4a4737;
+  color: white;
+  font-family: "Titillium Web", sans-serif;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+button:hover, [type="submit"]:hover {
+  background-color: #53565a;
+}
+
+form {
+  margin: 10px auto;
+  width: 400px; 
+  display: flex;
+  flex-direction: column;
+  color: #d9c4b4;
+  border: 1px solid #bbc0c6;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #1d1d1d;
+}
+
+#submit-title {
+  text-align: center;
+  font-family: "Titillium Web", sans-serif;
+  color: #d9c4b4;
+  margin-bottom: 10px;
 }

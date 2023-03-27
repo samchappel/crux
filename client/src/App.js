@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Header from "./Header";
+import Nav from "./Nav"
+import Home from "./Home";
+import ClimbingRoutes from "./ClimbingRoutes";
+import NewRouteForm from "./NewRouteForm";
+import Profile from "./Profile";
+import LogIn from "./LogIn";
 
 function App() {
+  const [page, setPage] = useState("/")
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Nav onChangePage={setPage} />
+      <Switch>
+        <Route path="/crux">
+          <Home />
+        </Route>
+        <Route path="/routes">
+          <ClimbingRoutes />
+        </Route>
+        <Route path="/submit">
+          <NewRouteForm />
+        </Route>
+        <Route path="/profile">
+          <Profile />
+        </Route>
+        <Route path="/log_in">
+          <LogIn />
+        </Route>
+      </Switch>
     </div>
   );
 }
 
-export default App;
+function WrappedApp() {
+  return (
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  )
+}
+
+export default WrappedApp;
