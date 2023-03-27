@@ -5,19 +5,21 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.associationproxy import association_proxy
 
-# metadata = MetaData(naming_convention={
-#     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
-# })
+metadata = MetaData(naming_convention={
+    "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
+})
 
-# db = SQLAlchemy(metadata=metadata)
+db = SQLAlchemy(metadata=metadata)
 
 class Location(db.Model, SerializerMixin):
     __tablename__ = 'locations'
 
     id = db.Column(db.Integer, primary_key=True)
     crag_name = db.Column(db.String, nullable=False)
+    place = db.Column(db.String, nullable=False)
+    image = db.Column(db.String)
     city = db.Column(db.String, nullable=False)
-    state = db.Column(db.String, nullable=False)
+    state = db.Column(db.String)
     country = db.Column(db.String, nullable=False)
 
     routes = db.relationship('Route', backref='location')
@@ -26,14 +28,14 @@ class Location(db.Model, SerializerMixin):
     def validate_name(self, key, value):
         if not value:
             raise ValueError('Crag name must be provided')
+    @validates('place')
+    def validate_place(self, key, value):
+        if not value:
+            raise ValueError('Place must be provided')
     @validates('city')
     def validate_city(self, key, value):
         if not value:
             raise ValueError('City must be provided')
-    @validates('state')
-    def validate_state(self, key, value):
-        if not value:
-            raise ValueError('State must be provided')
     @validates('country')
     def validate_country(self, key, value):
         if not value:
@@ -100,9 +102,9 @@ class Climber(db.Model, SerializerMixin):
     __tablename__ = 'climbers'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.Varchar, nullable=False, unique=True)
-    email = db.Column(db.Varchar, nullable=False, unique=True)
-    password = db.Column(db.Varchar, nullable=False)
+    username = db.Column(db.String, nullable=False, unique=True)
+    email = db.Column(db.String, nullable=False, unique=True)
+    password = db.Column(db.String, nullable=False)
     first_name = db.Column(db.String, nullable=False)
     last_name = db.Column(db.String)
 
@@ -117,7 +119,7 @@ class Climber(db.Model, SerializerMixin):
             raise ValueError('Username must be provided')
         elif username in usernames:
             raise ValueError('Username already exists')
-        elif len(value) < 3:
+        elif len(username) < 3:
             raise ValueError('Username must be at least 3 characters long.')
         return username
     @validates('email')
@@ -126,7 +128,7 @@ class Climber(db.Model, SerializerMixin):
         emails = [climber.email for climber in climbers]
         if not email:
             raise ValueError('Email must be provided')
-        elif value in emails:
+        elif email in emails:
             raise ValueError('Email already exists')
         elif not re.search('@', value):
             raise ValueError('Must be a valid email')
