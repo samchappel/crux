@@ -6,7 +6,18 @@
 
 body {
   background-color: #88837e;
+  padding-right: calc(10px + env(safe-area-inset-right)); 
+  min-height: 100vh;
+  /* add a minimum height to account for scrollbar */
 }
+
+@media (min-width: 768px) {
+  body {
+    min-height: calc(100vh - 50px);
+    /* subtract the height of the navbar from the minimum height on larger screens */
+  }
+}
+
 
 .header {
   position: relative;
@@ -35,7 +46,7 @@ body {
 }
 .crux-subheader {
   color: #c5bfb5;
-  text-shadow: black 0px 0px 2px;
+  text-shadow: #335364 0px 0px 2px;
   font-size: 25px;
   font-family: "Titillium Web", sans-serif;
 }
@@ -72,7 +83,7 @@ main {
 }
 
 .nav-bar a:hover {
-  color: #c5bfb5;
+  color: #10abd8;
 }
 
 #form-wrapper {
@@ -97,7 +108,7 @@ input {
 
 button, [type="submit"] {
   cursor: pointer;
-  background-color: #4a4737;
+  background-color: #53565a;
   color: white;
   font-family: "Titillium Web", sans-serif;
   border: none;
@@ -107,7 +118,7 @@ button, [type="submit"] {
 }
 
 button:hover, [type="submit"]:hover {
-  background-color: #53565a;
+  background-color: #10abd8;
 }
 
 form {
@@ -115,11 +126,11 @@ form {
   width: 400px; 
   display: flex;
   flex-direction: column;
-  color: #d9c4b4;
+  color: #cad0cf;
   border: 1px solid #bbc0c6;
   border-radius: 5px;
   padding: 10px;
-  background-color: #1d1d1d;
+  background-color: #335364;
 }
 
 #submit-title {
