@@ -31,7 +31,7 @@ function App() {
       <Header />
       <Nav onChangePage={setPage} />
       <Switch>
-        <Route path="/crux">
+        <Route path="/featured_routes">
           <Home />
         </Route>
         <Route path="/routes">

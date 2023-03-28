@@ -1,4 +1,4 @@
-from flask import Flask, request, make_response, session, abort
+from flask import Flask, request, make_response, session, abort, jsonify
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
@@ -95,6 +95,17 @@ class RouteByID(Resource):
         )
         return response
 api.add_resource(RouteByID, '/route/<int:id>')
+
+def get_featured_routes():
+    top_routes = db.session.query(Route, db.func.avg(Review.star_rating).label('average_star_rating')).join(Review).group_by(Route.id).order_by(db.func.avg(Review.star_rating).desc()).limit(3).all()
+    return top_routes
+
+class FeaturedRoutes(Resource):
+    def get(self):
+        featured_routes = get_featured_routes()
+        return jsonify([{"route": route.to_dict(), "average_star_rating": average_star_rating} for route, average_star_rating in featured_routes])
+
+api.add_resource(FeaturedRoutes, '/featured_routes')
 
 class Reviews(Resource):
     def post(self):
