@@ -9,11 +9,11 @@ from models import db, Climber, Location, Route, Review
 # CLIMBER, LOCATION, ROUTE, REVIEW(JOIN TABLE)
 
 # Delete all existing data
-print('deleting all data')
-with app.app_context():
-    db.drop_all()
-    db.create_all()
-print('all data deleted')
+# print('deleting all data')
+# with app.app_context():
+#     db.drop_all()
+#     db.create_all()
+# print('all data deleted')
 # Climber data
 
 print('creating climbers')
@@ -33,11 +33,11 @@ def make_climbers():
 
     for climber_dict in climbers:
         climber = Climber(
-            name=climber_dict["name"],
-            style=climber_dict["style"],
-            grade=climber_dict["grade"],
-            image=climber_dict["image"],
-            location_id=climber_dict["location_id"]
+            username=climber_dict["username"],
+            email=climber_dict["email"],
+            password=climber_dict["password"],
+            first_name=climber_dict["first_name"],
+            last_name=climber_dict["last_name"]
         )
         climbers.append(climber)
 
@@ -63,11 +63,12 @@ def make_locations():
 
     for location_dict in locations:
         location = Location(
-            name=location_dict["name"],
-            style=location_dict["style"],
-            grade=location_dict["grade"],
+            place=location_dict["place"],
+            crag_name=location_dict["crag_name"],
+            city=location_dict["city"],
+            state=location_dict['state'],
             image=location_dict["image"],
-            location_id=location_dict["location_id"]
+            country=location_dict["country"]
         )
         locations.append(location)
 
@@ -125,17 +126,25 @@ def make_reviews():
 
     for review_dict in reviews:
         review = Review(
-            name=review_dict["name"],
-            style=review_dict["style"],
-            grade=review_dict["grade"],
-            image=review_dict["image"],
-            location_id=review_dict["location_id"]
+            star_rating=review_dict["star_rating"],
+            safety_rating=review_dict["safety_rating"],
+            quality_rating=review_dict["quality_rating"],
+            comment=review_dict["comment"],
+            climber_id=review_dict["climber_id"],
+            route_id=review_dict["route_id"]
         )
         reviews.append(review)
 
     db.session.add_all(reviews)
     db.session.commit()
-print('review created')
+print('review committed')
+
+if __name__ == '__main__':
+    with app.app_context():
+        make_climbers()
+        make_locations()
+        make_routes()
+        make_reviews()
 
 # climbing_routes = [
 #     {
