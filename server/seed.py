@@ -17,10 +17,10 @@ from models import db, Climber, Location, Route, Review
 # Climber data
 
 print('creating climbers')
-climbers = [
-    {"username": "packDaddy", "email": "packD@climber.com", "password": "samDAbest", "first_name": "Sam", "last_name": "C"},
-    {"username": "hot_stove", "email": "stove_top@climber.com", "password": "fireGripper", "first_name": "Steve", "last_name": "P"},
-    {"username": "send_IT", "email": "chalky@climber.com", "password": "sentDat", "first_name": "Ari", "last_name": "M"}
+climbers_list = [
+    {"username": "packDaddy", "email": "packD@climber.com", "password": "@samDAbest", "first_name": "Sam", "last_name": "C"},
+    {"username": "hot_stove", "email": "stove_top@climber.com", "password": "@fireGripper", "first_name": "Steve", "last_name": "P"},
+    {"username": "send_IT", "email": "chalky@climber.com", "password": "@sentDat", "first_name": "Ari", "last_name": "M"}
 ]
 print('climbers created')
 
@@ -31,7 +31,7 @@ def make_climbers():
 
     climbers = []
 
-    for climber_dict in climbers:
+    for climber_dict in climbers_list:
         climber = Climber(
             username=climber_dict["username"],
             email=climber_dict["email"],
@@ -47,7 +47,7 @@ print('climbers committed')
 # Location data
 
 print('creating locations')
-locations = [   
+locations_list = [   
     {"place": "Smith Rock", "crag_name": "The Dihedrals", "city": "Terrebonne", "state": "Oregon", "country": "USA"},    
     {"place": "Yosemite National Park", "crag_name": "Southwest Face", "city": "Mariposa County", "state": "California", "country": "USA"},    
     {"place": "Yosemite National Park", "crag_name": "El Capitan", "city": "Mariposa County", "state": "California", "country": "USA"},    
@@ -61,13 +61,13 @@ def make_locations():
 
     locations = []
 
-    for location_dict in locations:
+    for location_dict in locations_list:
         location = Location(
             place=location_dict["place"],
             crag_name=location_dict["crag_name"],
             city=location_dict["city"],
             state=location_dict['state'],
-            image=location_dict["image"],
+            #image=location_dict["image"],
             country=location_dict["country"]
         )
         locations.append(location)
@@ -78,7 +78,7 @@ print('locations committed')
 
 # Route data
 print('creating routes')
-routes = [    
+routes_list = [    
     {"name": "To Bolt or Not to Be", "style": "Sport", "grade": "5.14a", "image": "https://cdn-files.apstatic.com/climb/110017364_medium_1494317655.jpg", "location_id": 1},    
     {"name": "The Mandala", "style": "Bouldering", "grade": "V12", "image": "https://cdn-files.apstatic.com/climb/111781832_medium_1494317576.jpg", "location_id": 1},    
     {"name": "The Chief", "style": "Trad", "grade": "5.11c", "image": "https://cdn-files.apstatic.com/climb/110015987_medium_1494317341.jpg", "location_id": 1},    
@@ -94,7 +94,7 @@ def make_routes():
 
     routes = []
 
-    for route_dict in routes:
+    for route_dict in routes_list:
         route = Route(
             name=route_dict["name"],
             style=route_dict["style"],
@@ -110,7 +110,7 @@ print('routes committed')
 
 print('creating reviews')
 # Review data
-reviews = [
+reviews_list = [
     {"star_rating": 5, "safety_rating": 4, "quality_rating": 5, "comment": "Awesome climb!", "climber_id": 1, "route_id": 1},
     {"star_rating": 4, "safety_rating": 3, "quality_rating": 4, "comment": "Difficult problem, but rewarding.", "climber_id": 2, "route_id": 2},
     {"star_rating": 3, "safety_rating": 4, "quality_rating": 3, "comment": "Good climb, but overrated in my opinion.", "climber_id": 3, "route_id": 3}
@@ -124,7 +124,7 @@ def make_reviews():
 
     reviews = []
 
-    for review_dict in reviews:
+    for review_dict in reviews_list:
         review = Review(
             star_rating=review_dict["star_rating"],
             safety_rating=review_dict["safety_rating"],

@@ -29,18 +29,22 @@ class Location(db.Model, SerializerMixin):
     def validate_name(self, key, value):
         if not value:
             raise ValueError('Crag name must be provided')
+        return value
     @validates('place')
     def validate_place(self, key, value):
         if not value:
             raise ValueError('Place must be provided')
+        return value
     @validates('city')
     def validate_city(self, key, value):
         if not value:
             raise ValueError('City must be provided')
+        return value
     @validates('country')
     def validate_country(self, key, value):
         if not value:
             raise ValueError('Country must be provided')
+        return value
 
 
 class Route(db.Model, SerializerMixin):
@@ -61,14 +65,17 @@ class Route(db.Model, SerializerMixin):
     def validate_name(self, key, value):
         if not value:
             raise ValueError('Route name must be provided')
+        return value
     @validates('style')
     def validate_style(self, key, value):
         if not value:
             raise ValueError('Style must be provided')
+        return value
     @validates('grade')
     def validate_grade(self, key, value):
         if not value:
             raise ValueError('Grade must be provided')
+        return value
 
 class Review(db.Model, SerializerMixin):
     __tablename__ = 'reviews'
@@ -88,14 +95,17 @@ class Review(db.Model, SerializerMixin):
     def validate_star_rating(self, key, value):
         if not value:
             raise ValueError('Star rating must be provided')
+        return value
     @validates('safety_rating')
     def validate_safety_rating(self, key, value):
         if not value:
             raise ValueError('Safety rating must be provided')
+        return value
     @validates('quality_rating')
     def validate_quality_rating(self, key, value):
         if not value:
             raise ValueError('Quality rating must be provided')
+        return value
 
 
 class Climber(db.Model, SerializerMixin):
@@ -146,6 +156,7 @@ class Climber(db.Model, SerializerMixin):
     def validate_first_name(self, key, value):
         if not value:
             raise ValueError('First name must be provided')
+        return value
     
 
 
