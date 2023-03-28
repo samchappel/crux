@@ -1,4 +1,4 @@
-from flask import Flask, request, make_response, jsonify, abort
+from flask import Flask, request, make_response, session, abort
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_restful import Api, Resource
@@ -29,7 +29,7 @@ class Climbers(Resource):
     def get(self):
         climbers = [climber.to_dict() for climber in Climber.query.all()]
         response = make_response(
-            climber,
+            climbers,
             200
         )
         return response
@@ -52,7 +52,7 @@ class Locations(Resource):
     def get(self):
         locations = [location.to_dict() for location in Location.query.all()]
         response = make_response(
-            location,
+            locations,
             200
         )
         return response
@@ -76,7 +76,7 @@ class Routes(Resource):
     def get(self):
         routes = [route.to_dict() for route in Route.query.all()]
         response = make_response(
-            route,
+            routes,
             200
         )
         return response
