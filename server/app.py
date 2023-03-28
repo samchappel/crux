@@ -79,6 +79,7 @@ class Routes(Resource):
             routes,
             200
         )
+        # response.headers['Content-Type'] = 'application/json'
         return response
 api.add_resource(Routes, '/routes')
 
