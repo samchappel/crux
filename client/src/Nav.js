@@ -14,7 +14,7 @@ function NavBar() {
   return (
     <div className="nav-container">
       <nav className="nav-bar">
-        <Link to="/crux">Home</Link>
+        <Link to="/featured_routes">Home</Link>
         <Link to="/routes">Routes</Link>
         <Link to="/submit">Add a Route</Link>
         {isLoggedIn ? (
