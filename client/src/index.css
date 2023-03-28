@@ -6,17 +6,35 @@
 
 body {
   background-color: #88837e;
-  padding-right: calc(10px + env(safe-area-inset-right)); 
-  min-height: 100vh;
-  /* add a minimum height to account for scrollbar */
+  padding-right: 10px;
+  overflow-y: scroll;
 }
 
 @media (min-width: 768px) {
   body {
     min-height: calc(100vh - 50px);
-    /* subtract the height of the navbar from the minimum height on larger screens */
   }
+} 
+
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: #88837e;
 }
+body::-webkit-scrollbar-thumb {
+  background-color: #c5bfb5;
+  border-radius: 10px;
+}
+body.env-with-scrollbar {
+  padding-right: calc(20px + env(safe-area-inset-right));
+}
+
+body.env-without-scrollbar main {
+  padding-right: 20px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #335364;
+} 
 
 
 .header {
@@ -25,15 +43,13 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* border: 1px solid #333; */
   padding: 15px 20px 18px 18px;
   border-radius: 5px;
-  /* box-shadow: 2px 5px 5px #333; */
   background-image: url("../public/team-lynn-hill-climbing.jpg");
   background-repeat: no-repeat;
   background-size: 90%;
   background-position: top center;
-  width: 70%;
+  width: calc(70% - 10px); 
   height: 400px;
   margin: 0 auto;
 }
@@ -54,7 +70,7 @@ body {
 main {
   padding: 0 1rem;
   background-color: #b2b2ad;
-  width: 70%;
+  width: calc(70% - 10px); 
   margin: 0 auto;
 }
 
@@ -139,3 +155,18 @@ form {
   color: #d9c4b4;
   margin-bottom: 10px;
 }
+
+/* ::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  margin-block: 15px;
+  margin: 0 30px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 10px;
+} */
