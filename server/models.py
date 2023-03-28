@@ -24,6 +24,7 @@ class Location(db.Model, SerializerMixin):
     country = db.Column(db.String, nullable=False)
 
     routes = db.relationship('Route', backref='location')
+    serialize_rules = ('-routes',)
 
     @validates('crag_name')
     def validate_name(self, key, value):
@@ -59,6 +60,7 @@ class Route(db.Model, SerializerMixin):
     
     reviews = db.relationship('Review', backref='route', primaryjoin='Review.route_id == Route.id')
     climbers = association_proxy('reviews', 'climber')
+    serialize_rules = ('-reviews',)
     
 
     @validates('name')
@@ -77,6 +79,9 @@ class Route(db.Model, SerializerMixin):
             raise ValueError('Grade must be provided')
         return value
 
+    # def to_dict(self):
+    #     return SerializerMixin.to_dict(self)
+
 class Review(db.Model, SerializerMixin):
     __tablename__ = 'reviews'
     
@@ -89,6 +94,8 @@ class Review(db.Model, SerializerMixin):
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
     climber_id = db.Column(db.Integer, db.ForeignKey('climbers.id'))
     route_id = db.Column(db.Integer, db.ForeignKey('routes.id'))
+
+    serialize_rules = ('-climbers', '-routes', '-locations', '-created_at', '-updated_at')
 
 
     @validates('star_rating')
@@ -120,6 +127,8 @@ class Climber(db.Model, SerializerMixin):
 
     reviews = db.relationship('Review', backref='climber')
     routes = association_proxy('reviews', 'route')
+    serialize_rules = ('-reviews',)
+    
 
     @validates('username')
     def validate_username(self, key, username):
