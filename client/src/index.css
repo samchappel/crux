@@ -21,7 +21,7 @@ body::-webkit-scrollbar {
   background-color: #88837e;
 }
 body::-webkit-scrollbar-thumb {
-  background-color: #c5bfb5;
+  background-color: #cad0cf;
   border-radius: 10px;
 }
 body.env-with-scrollbar {
@@ -155,18 +155,3 @@ form {
   color: #d9c4b4;
   margin-bottom: 10px;
 }
-
-/* ::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  margin-block: 15px;
-  margin: 0 30px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #555;
-  border-radius: 10px;
-} */
