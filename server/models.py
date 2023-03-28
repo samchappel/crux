@@ -4,6 +4,7 @@ from sqlalchemy import MetaData
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.associationproxy import association_proxy
+import re
 
 metadata = MetaData(naming_convention={
     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
@@ -129,7 +130,7 @@ class Climber(db.Model, SerializerMixin):
             raise ValueError('Email must be provided')
         elif email in emails:
             raise ValueError('Email already exists')
-        elif not re.search('@', value):
+        elif not re.search('@', email):
             raise ValueError('Must be a valid email')
         return email
 
