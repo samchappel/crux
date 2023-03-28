@@ -51,9 +51,8 @@ class Route(db.Model, SerializerMixin):
     grade = db.Column(db.String, nullable=False)
     image = db.Column(db.String)
     location_id = db.Column(db.Integer, db.ForeignKey('locations.id'))
-    review_id = db.Column(db.Integer, db.ForeignKey('reviews.id'))
     
-    reviews = db.relationship('Review', backref='route')
+    reviews = db.relationship('Review', backref='route', primaryjoin='Review.route_id == Route.id')
     climbers = association_proxy('reviews', 'climber')
     
 
