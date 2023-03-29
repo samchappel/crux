@@ -29,9 +29,9 @@ function SingleRoute(){
         </div>
         <div className="single-center">
         <h3 className="single-name">{name}</h3>
-        <p>{style}</p>
-        <p>{grade}</p>
-        <p>Location:</p>
+        <p>Style: {style}</p>
+        <p>Grade: {grade}</p>
+        <p>Location: {location} </p>
         </div>
     </div>
     )
