@@ -70,18 +70,29 @@ print('climbers committed')
 
 print('creating locations')
 locations_list = [   
-    {"place": "Smith Rock", "city": "Terrebonne", "state": "Oregon", "country": "USA"},
-    {"place": "Yosemite National Park", "city": "Mariposa", "state": "California", "country": "USA"},
-    {"place": "Céüse", "city": "Sigoyer", "state": "Provence-Alpes-Côte d'Azur", "country": "France"},
-    {"place": "Mallorca", "city": "Balearic Islands", "state": "Balearic Islands", "country": "Spain"},
-    {"place": "Dumbarton Rock", "city": "Dumbarton", "state": "West Dunbartonshire", "country": "Scotland"},
-    {"place": "Black Canyon of the Gunnison", "city": "Montrose", "state": "Colorado", "country": "USA"},
-    {"place": "Flatanger Cave", "city": "Flatanger", "state": "Trøndelag", "country": "Norway"},
-    {"place": "Sardinia", "city": "Nuoro", "state": "Sardinia", "country": "Italy"},
-    {"place": "The Hurricave", "city": "Hanshelleren", "state": "Nordland", "country": "Norway"},
-    {"place": "The Diamond", "city": "Estes Park", "state": "Colorado", "country": "USA"},
-    {"place": "Squamish", "city": "Squamish", "state": "British Columbia", "country": "Canada"},
-    {"place": "La Cova de l'Ocell", "city": "Santa Linya", "state": "Catalonia", "country": "Spain"}]
+    {"place": "Smith Rock", "city": "Terrebonne", "state": "Oregon", "country": "USA"},                     #1
+    {"place": "Yosemite National Park", "city": "Mariposa", "state": "California", "country": "USA"},       #2
+    {"place": "Céüse", "city": "Sigoyer", "state": "Provence-Alpes-Côte d'Azur", "country": "France"},      #3
+    {"place": "Mallorca", "city": "Balearic Islands", "state": "Balearic Islands", "country": "Spain"},     #4
+    {"place": "Dumbarton Rock", "city": "Dumbarton", "state": "West Dunbartonshire", "country": "Scotland"},   #5
+    {"place": "Black Canyon of the Gunnison", "city": "Montrose", "state": "Colorado", "country": "USA"},#6
+    {"place": "Flatanger Cave", "city": "Flatanger", "state": "Trøndelag", "country": "Norway"},#7
+    {"place": "Sardinia", "city": "Nuoro", "state": "Sardinia", "country": "Italy"},#8
+    {"place": "The Hurricave", "city": "Hanshelleren", "state": "Nordland", "country": "Norway"},#9
+    {"place": "The Diamond", "city": "Estes Park", "state": "Colorado", "country": "USA"},#10
+    {"place": "Squamish", "city": "Squamish", "state": "British Columbia", "country": "Canada"},#11
+    {"place": "La Cova de l'Ocell", "city": "Santa Linya", "state": "Catalonia", "country": "Spain"}#12
+    {"place": "The Buttermilks", "city": "Bishop", "state": "California", "country": "USA"}#13
+    {"place": "Mojave National Preserve", "city": "Clark Mountain", "state": "California", "country": "USA"}#14
+    {"place": "Rocky Mountain National Park", "city": "Estes Park", "state": "Colorado", "country": "USA"}#15
+    {"place": "Flynn Cave", "city": "St. George", "state": "Utah", "country": "USA"}#16
+    {"place": "Villanueva del Rosario", "city": "Seville", "state": "Andalusia", "country": "Spain"}#17
+    {"place": "Rifle Mountain Park", "city": "Rifle", "state": "Colorado", "country": "USA"}#18
+    {"place": "Red River Gorge", "city": "Stanton", "state": "Kentucky", "country": "USA"}#19
+    {"place": "Promontory", "city": "False Klamath Cove", "state": "California", "country": "USA"}#20
+    {"place": "Rumney", "city": "Rumney", "state": "New Hampshire", "country": "USA"}#21
+    {"place": "Little Cottonwood Canyon", "city": "Salt Lake City", "state": "Utah", "country": "USA"}#22
+]
 print('locations created')
 
 # Add locations to database
@@ -108,57 +119,57 @@ print('locations committed')
 # Route data
 print('creating routes')
 routes_list = [    
-    {"name": "To Bolt or Not to Be", "style": "Sport", "grade": "5.14a", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},    
-    {"name": "The Mandala", "style": "Bouldering", "grade": "V12", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},    
-    {"name": "The Chief", "style": "Trad", "grade": "5.11c", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},    
-    {"name": "El Capitan", "style": "Multi-pitch", "grade": "5.13d", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 3},    
-    {"name": "The Nose", "style": "Multi-pitch", "grade": "5.14a", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 2},    
-    {"name": "Biographie", "style": "Sport", "grade": "5.15a", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 4},
-    {"name": "Dreamcatcher", "style": "Sport", "grade": "5.14d", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},
-    {"name": "La Dura Dura", "style": "Sport", "grade": "5.15c", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},
-    {"name": "Jumbo Love", "style": "Sport", "grade": "5.15b", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},
-    {"name": "Perfecto Mundo", "style": "Sport", "grade": "5.15c", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 12},
-    {"name": "Es Pontas", "style": "Deep Water Solo", "grade": "5.15a", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 5},
-    {"name": "The Salathe Wall", "style": "Multi-pitch", "grade": "5.13b", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 3},
-    {"name": "Rhapsody", "style": "Trad", "grade": "E11 7a", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 6},
-    {"name": "The Bachar-Yerian", "style": "Trad", "grade": "5.11d", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},
-    {"name": "The Diamond", "style": "Trad", "grade": "5.14a", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 7},
-    {"name": "Leviathan", "style": "Sport", "grade": "5.14c", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},
-    {"name": "Silence", "style": "Sport", "grade": "5.15d", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 8},
-    {"name": "La Rambla", "style": "Sport", "grade": "5.15a", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 4},
-    {"name": "La Planta de Shiva", "style": "Sport", "grade": "5.15b", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 4},
-    {"name": "Perfecto Mundo", "style": "Sport", "grade": "5.15c", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 4},
-    {"name": "La Dura Dura", "style": "Sport", "grade": "5.15c", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},
-    {"name": "La Rambla Extension", "style": "Sport", "grade": "5.15b", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 4},
-    {"name": "Bad Girls Club", "style": "Bouldering", "grade": "V10", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},
-    {"name": "Terre de Sienne", "style": "Sport", "grade": "5.14b", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 9},
-    {"name": "The Path", "style": "Sport", "grade": "5.14a", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},
-    {"name": "Algorithm", "style": "Sport", "grade": "5.14d", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 10},
-    {"name": "Shadowboxing", "style": "Sport", "grade": "5.14d", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},
-    {"name": "Dihedral Wall", "style": "Trad", "grade": "5.14a", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 3},
-    {"name": "The Dawn Wall", "style": "Multi-pitch", "grade": "5.15a", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 2},
-    {"name": "The Reticent Wall", "style": "Trad", "grade": "5.13c", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 3},
-    {"name": "The Emperor's New Clothes", "style": "Sport", "grade": "5.14c", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},
-    {"name": "Kaleidoscope", "style": "Sport", "grade": "5.14c", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 4},
-    {"name": "The Reckoning", "style": "Sport", "grade": "5.14d", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},
-    {"name": "The Edge of Time", "style": "Trad", "grade": "5.12a", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 11},
-    {"name": "La Voie Petit", "style": "Trad", "grade": "5.13c", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 3},
-    {"name": "La Capella", "style": "Sport", "grade": "5.15b", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 4},
-    {"name": "Blackbeard's Tears", "style": "Sport", "grade": "5.14c", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},
-    {"name": "The Fly", "style": "Bouldering", "grade": "V13", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},
-    {"name": "King Line", "style": "Bouldering", "grade": "V14", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},
-    {"name": "The Grand Illusion", "style": "Sport", "grade": "5.14c", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},
-    {"name": "La Fabela pa la Enmienda", "style": "Sport", "grade": "5.15a", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 9},
-    {"name": "Cobra Crack", "style": "Trad", "grade": "5.14c", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 12},
-    {"name": "The Shield", "style": "Big Wall", "grade": "VI 5.13b", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 3},
-    {"name": "Ali Hulk Sit Start Extension Total", "style": "Bouldering", "grade": "V16", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 13},
-    {"name": "La Esencia de la Resistencia", "style": "Sport", "grade": "5.15a", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 4},
-    {"name": "La Fuerza de la Gravedad", "style": "Sport", "grade": "5.15a", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 4},
-    {"name": "The Kaukulator", "style": "Trad", "grade": "5.12c", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 1},
-    {"name": "La Sportiva", "style": "Sport", "grade": "5.14b", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 4},
-    {"name": "Esclatamasters", "style": "Sport", "grade": "5.15a", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 4},
-    {"name": "El Bon Combat", "style": "Sport", "grade": "5.15b", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 8},
-    {"name": "La Fabela", "style": "Sport", "grade": "5.14c", "image": "https://images.squarespace-cdn.com/content/v1/5167372ce4b0f61ca31021ea/1449250741985-I1J6P05WJAHIJCSV6R65/image-asset.jpeg?format=500w", "location_id": 4}
+    {"name": "To Bolt or Not to Be", "style": "Sport", "grade": "5.14a", "image": "https://images.squarespace-cdn.com/content/v1/5d535837ae1b79000132a86a/1565743790818-73W4WJSK3UKO86LYQ3QR/image-asset.jpeg?format=1000w", "location_id": 1},    
+    {"name": "The Mandala", "style": "Bouldering", "grade": "V12", "image": "https://i.ytimg.com/vi/szvISeet5gI/maxresdefault.jpg", "location_id": 13},    
+    {"name": "The Chief", "style": "Trad", "grade": "5.11c", "image": "https://image.thecrag.com/10x286:2490x1588/fit-in/1200x630/c9/96/c996c1ee1c0974d0b94681bc755003ec10c873ff", "location_id": 11},    
+    {"name": "El Capitan", "style": "Multi-pitch", "grade": "5.13d", "image": "https://cdn.britannica.com/95/100595-050-55D897A5/El-Capitan-Yosemite-National-Park-California.jpg", "location_id": 2},    
+    {"name": "The Nose", "style": "Multi-pitch", "grade": "5.14a", "image": "https://snowbrains.com/wp-content/uploads/2016/10/29ECB93800000578-3137377-The_Nose_of_El_Capitan_is_one_of_the_most_challenging_routes_up_-a-10_1435147442416.jpg", "location_id": 2},    
+    {"name": "Biographie", "style": "Sport", "grade": "5.15a", "image": "https://i.ytimg.com/vi/C_N8znD3exI/maxresdefault.jpg", "location_id": 3},
+    {"name": "Dreamcatcher", "style": "Sport", "grade": "5.14d", "image": "https://www.planetmountain.com/img/1/39357.jpg", "location_id": 11},
+    {"name": "La Dura Dura", "style": "Sport", "grade": "5.15c", "image": "https://www.climbing.com/wp-content/uploads/2014/03/la-dura-complete-the-full-story-of-the.png", "location_id": 13},
+    {"name": "Jumbo Love", "style": "Sport", "grade": "5.15b", "image": "https://www.rockandice.com/wp-content/uploads/2017/09/Ethan_Pringle_Jumbo_Love_COVER.jpg", "location_id": 14},
+    {"name": "Perfecto Mundo", "style": "Sport", "grade": "5.15c", "image": "https://www.rockandice.com/wp-content/uploads/2018/05/Screen-Shot-2018-05-10-at-9.17.23-AM-e1525965509232.png", "location_id": 12},
+    {"name": "Es Pontas", "style": "Deep Water Solo", "grade": "5.15a", "image": "https://gripped.com/wp-content/uploads/2018/10/Es-Pontas.jpg", "location_id": 4},
+    {"name": "The Salathe Wall", "style": "Multi-pitch", "grade": "5.13b", "image": "https://www.rockandice.com/wp-content/uploads/2017/12/findlay-salathe-1-e1512432264795.jpg", "location_id": 2},
+    {"name": "Rhapsody", "style": "Trad", "grade": "E11 7a", "image": "https://www.planetmountain.com/img/1/36993.jpg", "location_id": 5},
+    {"name": "The Bachar-Yerian", "style": "Trad", "grade": "5.11d", "image": "https://gripped.com/wp-content/uploads/2020/04/Bachar-Yerian.jpg", "location_id": 2},
+    {"name": "The Diamond", "style": "Trad", "grade": "5.14a", "image": "http://www.alpinist.com/media/ALP19/alp19-24-1.jpg", "location_id": 15},
+    {"name": "Bone Tomahawk", "style": "Sport", "grade": "5.14c", "image": "https://lcdn.lasportivausa.com/pub/media/wysiwyg/Blog/Joe_Kinder_Bone_Tomahawk/IMG_0055_resized.jpg", "location_id": 16},
+    {"name": "Silence", "style": "Sport", "grade": "5.15d", "image": "https://www.lasportiva.com/media/mageplaza/blog/post/a/o/ao-2_1.jpg", "location_id": 7},
+    {"name": "La Rambla", "style": "Sport", "grade": "5.15a", "image": "https://www.rockandice.com/wp-content/uploads/2017/09/Margo-Hayes-La-Rambla.png?crop=1070:602&width=1070", "location_id": 12},
+    {"name": "La Planta de Shiva", "style": "Sport", "grade": "5.15b", "image": "https://hardclimbs.info/wp-content/uploads/2022/02/Jakob-Schubert-La-Planta-de-Shiva.jpg", "location_id": 17},
+    {"name": "Sentry Box", "style": "Trad", "grade": "5.12a", "image": "https://mountainproject.com/assets/photos/climb/117371514_medium_1563394269.jpg?cache=1664483213", "location_id": 11},
+    {"name": "Cardinal Sin", "style": "Sport", "grade": "5.12a", "image": "https://mountainproject.com/assets/photos/climb/113615789_medium_1506023127.jpg?cache=1657748233", "location_id": 18},
+    {"name": "La Rambla Extension", "style": "Sport", "grade": "5.15b", "image": "https://www.planetmountain.com/img/1/44312.jpg", "location_id": 12},
+    {"name": "Bad Girls Club", "style": "Sport", "grade": "5.14c", "image": "https://mountainproject.com/assets/photos/climb/123518699_medium_1669846262.jpg?cache=1677817050", "location_id": 18},
+    {"name": "Pump-O-Rama", "style": "Sport", "grade": "5.13a", "image": "https://mountainproject.com/assets/photos/climb/112165571_medium_1494324731.jpg?cache=1676816631", "location_id": 18},
+    {"name": "The Path", "style": "Sport", "grade": "5.13c", "image": "http://gripped.com/wp-content/uploads/2016/09/Doug-McConnell-on-The-Path-5.14R.-Photo-Kerrin-Gale-WeeBitWindy.jpg", "location_id": 18},
+    {"name": "Soul Slinger", "style": "Boulder", "grade": "V9", "image": "https://i.ytimg.com/vi/pSk5A3mpVB4/maxresdefault.jpg", "location_id": 13},
+    {"name": "Shadowboxing", "style": "Sport", "grade": "5.14d", "image": "https://i.ytimg.com/vi/Ip928VM0i0g/maxresdefault.jpg", "location_id": 18},
+    {"name": "Dihedral Wall", "style": "Trad", "grade": "5.14a", "image": "https://www.planetmountain.com/img/1/41826.jpg", "location_id": 2},
+    {"name": "The Dawn Wall", "style": "Multi-pitch", "grade": "5.15a", "image": "https://images.squarespace-cdn.com/content/v1/5e55a2a23510ad4437888347/1668115466255-V6X8755W1XX4URN86CKE/Tommy-Caldwell_Image_Austin-Siadak.jpeg?format=1500w", "location_id": 2},
+    {"name": "The Reticent Wall", "style": "Trad", "grade": "5.13c", "image": "https://www.thebmc.co.uk/Handlers/ArticleImageHandler.ashx?id=7879&index=0&w=605&h=434", "location_id": 2},
+    {"name": "Astro Dog", "style": "Trad", "grade": "5.11", "image": "https://www.patagonia.com/blog/wp-content/uploads/2016/07/IMG_0198_2-768x513.jpg.webp", "location_id": 6},
+    {"name": "Kaleidoscope", "style": "Sport", "grade": "5.13c", "image": "https://www.climbing.com/wp-content/uploads/2021/04/266824736_SimekNEW-1024x683.jpg?width=1200", "location_id": 19},
+    {"name": "The Reckoning", "style": "Sport", "grade": "5.14d", "image": "https://www.cathedralmountainguides.com/wp-content/uploads/fullsizeoutput_1335-600x600.jpeg", "location_id": 11},
+    {"name": "The Edge of Time", "style": "Trad", "grade": "5.12a", "image": "https://mountainproject.com/assets/photos/climb/107561751_medium_1494197300.jpg?cache=1679092525", "location_id": 11},
+    {"name": "La Voie Petit", "style": "Trad", "grade": "5.13c", "image": "https://i.ytimg.com/vi/nil9QfV6SaQ/maxresdefault.jpg", "location_id": 3},
+    {"name": "La Capella", "style": "Sport", "grade": "5.15b", "image": "https://www.thebmc.co.uk/media/images/Will-Bosi_Siurana_Last%20night_credit%20Band%20of%20Birds-4574.jpg", "location_id": 12},
+    {"name": "Blackbeard's Tears", "style": "Sport", "grade": "5.14c", "image": "https://dmmclimbing.com/getattachment/Climbers/Ethan-Pringle/T_MEADOWS_08_16_19_CANON_02_2350.jpg?lang=en-GB&height=623&width=934", "location_id": 20},
+    {"name": "The Fly", "style": "Bouldering", "grade": "V13", "image": "https://www.climbing.com/wp-content/uploads/2008/04/video-still-of-kevin-jorgeson-about-to-.gif", "location_id": 21},
+    {"name": "King Line", "style": "Bouldering", "grade": "V14", "image": "https://i.ytimg.com/vi/3vEJS2AwGA8/maxresdefault.jpg", "location_id": 8},
+    {"name": "The Grand Illusion", "style": "Sport", "grade": "5.14c", "image": "https://gripped.com/wp-content/uploads/2021/06/DSC00497.jpg", "location_id": 22},
+    {"name": "La Fabela pa la Enmienda", "style": "Sport", "grade": "5.15a", "image": "https://d3byf4kaqtov0k.cloudfront.net/news/635870096154355425_1653739_514205505424576_921315126296280953_n.jpg", "location_id": 12},
+    {"name": "Cobra Crack", "style": "Trad", "grade": "5.14c", "image": "https://gripped.com/wp-content/uploads/2015/10/Will-stanhope-1200x675.jpg", "location_id": 11},
+    {"name": "The Shield", "style": "Big Wall", "grade": "VI 5.13b", "image": "https://i1.wp.com/www.climbingyosemite.com/wp-content/uploads/2020/08/1.jpg", "location_id": 2},
+    {"name": "Ali Hulk Sit Start Extension Total", "style": "Bouldering", "grade": "V16", "image": "https://www.lacrux.com/wp-content/uploads/2020/10/Video-Dave-Graham-bei-der-Begehung-von-Ali-Hulk-Extension-Total-Sit-Start.jpg", "location_id": 4},
+    {"name": "La Esencia de la Resistencia", "style": "Sport", "grade": "5.15a", "image": "https://imgcdn.ukc2.com/i/182465?fm=jpg&time=1564143946&s=0a4079c3be0d5fd6dc576d816faa0dbb", "location_id": 4},
+    {"name": "La Fuerza de la Gravedad", "style": "Sport", "grade": "5.15a", "image": "https://www.desnivel.com/images/2018/02/talomartin-climbing-pedriza-upm-7982.jpg", "location_id": 4},
+    {"name": "The Kaukulator", "style": "Trad", "grade": "5.12c", "image": "https://gripped.com/wp-content/uploads/2022/02/The-Rostrum-3-Copy-1000x675.jpeg", "location_id": 2},
+    {"name": "La Sportiva", "style": "Sport", "grade": "5.14b", "image": "https://cdn-files.apstatic.com/climb/111781910_medium_1494317576.jpg", "location_id": 8},
+    {"name": "Esclatamasters", "style": "Sport", "grade": "5.15a", "image": "https://imgcdn.ukc2.com/i/383589?fm=jpg&time=1647002355&dpr=1&w=815&s=3f133069c4e1e1e8532a3966c9d6111c", "location_id": 12},
+    {"name": "El Bon Combat", "style": "Sport", "grade": "5.15b", "image": "https://www.climbing.com/wp-content/uploads/2022/05/El-Bon-Combat-scaled.jpg", "location_id": 12},
+    {"name": "Churning in the Wake", "style": "Sport", "grade": "5.13a", "image": "https://mountainproject.com/assets/photos/climb/119144682_medium_1593709439.jpg?cache=1635820350", "location_id": 1}
     ]
 print('routes created')
 
