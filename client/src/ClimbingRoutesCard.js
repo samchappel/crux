@@ -1,9 +1,9 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 function ClimbingRoutesCard({ route }) {
 
-  const { name, style, grade, image, id , location} = route;
-
+  const { name, style, grade, image, id, location } = route;
 
   return (
     <li className="card">
