@@ -18,7 +18,7 @@ function SingleRoute(){
     }, [id])
     
     if (!isLoaded) return <h1>Loading...</h1>;
-    const { name, style, grade, image} = route
+    const { name, style, grade, image, location} = route
 
     return(
         <div className="single-route">
@@ -31,7 +31,7 @@ function SingleRoute(){
         <h3 className="single-name">{name}</h3>
         <p>Style: {style}</p>
         <p>Grade: {grade}</p>
-        <p>Location: {location} </p>
+        <p>Location: {location.place} </p>
         </div>
     </div>
     )

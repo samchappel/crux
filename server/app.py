@@ -73,7 +73,7 @@ class RouteByID(Resource):
             200
         )
         return response
-api.add_resource(RouteByID, '/route/<int:id>')
+api.add_resource(RouteByID, '/routes/<int:id>')
 
 def get_featured_routes():
     top_routes = db.session.query(Route, db.func.avg(Review.star_rating).label('average_star_rating')).join(Review).group_by(Route.id).order_by(db.func.avg(Review.star_rating).desc()).limit(10).all()
