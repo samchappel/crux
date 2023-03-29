@@ -7,10 +7,31 @@ import ClimbingRoutesContainer from "./ClimbingRoutesContainer";
 import NewRouteForm from "./NewRouteForm";
 import Profile from "./Profile";
 import LogIn from "./LogIn";
+import SingleRoute from "./SingleRoute"
+//import RouteEdit from "./RouteEdit"
 
 function App() {
   const [page, setPage] = useState("/")
   const [routes, setRoutes] = useState([])
+  // const [climber, setClimber] = useState(null);
+
+  //   useEffect(() => {
+  //       fetchClimber()
+  //   },[])
+
+  //   const fetchClimber = () => (
+  //       fetch('/authorized')
+  //       .then(res => {
+  //           if(res.ok){
+  //           res.json()
+  //           .then(data => {
+  //               setClimber(data)
+  //           })
+  //           } else {
+  //           setClimber(null)
+  //           }
+  //       })
+  //   )
 
   useEffect(() => {
     fetch('http://localhost:5555/routes')
@@ -33,6 +54,12 @@ function App() {
       <Switch>
         <Route path="/featured_routes">
           <Home />
+        </Route>
+        {/* <Route path="/routes/:id/edit">
+          <RouteEdit climber={climber}/>
+        </Route> */}
+        <Route path="/routes/:id">
+          <SingleRoute/>
         </Route>
         <Route path="/routes">
           <ClimbingRoutesContainer routes={routes} setRoutes={setRoutes} />
