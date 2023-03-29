@@ -11,7 +11,7 @@ class Location(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     place = db.Column(db.String, nullable=False)
-    image = db.Column(db.String)
+    # image = db.Column(db.String)
     city = db.Column(db.String, nullable=False)
     state = db.Column(db.String)
     country = db.Column(db.String, nullable=False)
