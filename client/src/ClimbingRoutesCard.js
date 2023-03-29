@@ -1,8 +1,9 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 function ClimbingRoutesCard({ route }) {
+
   const { name, style, grade, image, id , location} = route;
+
 
   return (
     <li className="card">
@@ -16,6 +17,7 @@ function ClimbingRoutesCard({ route }) {
         <p>{style}</p>
         <p>{grade}</p>
         <p>Location: {location.place}</p>
+
       </div>
     </li>
   );

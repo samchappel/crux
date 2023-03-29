@@ -81,16 +81,16 @@ locations_list = [
     {"place": "The Hurricave", "city": "Hanshelleren", "state": "Nordland", "country": "Norway"},#9
     {"place": "The Diamond", "city": "Estes Park", "state": "Colorado", "country": "USA"},#10
     {"place": "Squamish", "city": "Squamish", "state": "British Columbia", "country": "Canada"},#11
-    {"place": "La Cova de l'Ocell", "city": "Santa Linya", "state": "Catalonia", "country": "Spain"}#12
-    {"place": "The Buttermilks", "city": "Bishop", "state": "California", "country": "USA"}#13
-    {"place": "Mojave National Preserve", "city": "Clark Mountain", "state": "California", "country": "USA"}#14
-    {"place": "Rocky Mountain National Park", "city": "Estes Park", "state": "Colorado", "country": "USA"}#15
-    {"place": "Flynn Cave", "city": "St. George", "state": "Utah", "country": "USA"}#16
-    {"place": "Villanueva del Rosario", "city": "Seville", "state": "Andalusia", "country": "Spain"}#17
-    {"place": "Rifle Mountain Park", "city": "Rifle", "state": "Colorado", "country": "USA"}#18
-    {"place": "Red River Gorge", "city": "Stanton", "state": "Kentucky", "country": "USA"}#19
-    {"place": "Promontory", "city": "False Klamath Cove", "state": "California", "country": "USA"}#20
-    {"place": "Rumney", "city": "Rumney", "state": "New Hampshire", "country": "USA"}#21
+    {"place": "La Cova de l'Ocell", "city": "Santa Linya", "state": "Catalonia", "country": "Spain"},#12
+    {"place": "The Buttermilks", "city": "Bishop", "state": "California", "country": "USA"},#13
+    {"place": "Mojave National Preserve", "city": "Clark Mountain", "state": "California", "country": "USA"},#14
+    {"place": "Rocky Mountain National Park", "city": "Estes Park", "state": "Colorado", "country": "USA"},#15
+    {"place": "Flynn Cave", "city": "St. George", "state": "Utah", "country": "USA"},#16
+    {"place": "Villanueva del Rosario", "city": "Seville", "state": "Andalusia", "country": "Spain"},#17
+    {"place": "Rifle Mountain Park", "city": "Rifle", "state": "Colorado", "country": "USA"},#18
+    {"place": "Red River Gorge", "city": "Stanton", "state": "Kentucky", "country": "USA"},#19
+    {"place": "Promontory", "city": "False Klamath Cove", "state": "California", "country": "USA"},#20
+    {"place": "Rumney", "city": "Rumney", "state": "New Hampshire", "country": "USA"},#21
     {"place": "Little Cottonwood Canyon", "city": "Salt Lake City", "state": "Utah", "country": "USA"}#22
 ]
 print('locations created')
