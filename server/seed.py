@@ -21,7 +21,7 @@ climbers_list = [
     {"username": "packDaddy", "email": "packD@climber.com", "password": "@samDAbest", "first_name": "Sam", "last_name": "Chappel"},
     {"username": "hot_stove", "email": "stove_top@climber.com", "password": "@fireGripper", "first_name": "Steve", "last_name": "Passarelli"},
     {"username": "send_IT", "email": "chalky@climber.com", "password": "@sentDat", "first_name": "Ari", "last_name": "Marz"},
-    {"username": "KyleBigMits", "email": "kyle@boulderingisdumb.com", "password": "@Top0ut", "first_name": "Kyle", "last_name": "Wehrung"},
+    {"username": "KyleBigMits", "email": "kyle@boulderingisdumb.com", "password": "@Top0ut23", "first_name": "Kyle", "last_name": "Wehrung"},
     {"username": "NickRocksOn", "email": "nick@rockymoves.com", "password": "@CragHopper", "first_name": "Nick", "last_name": "Johnson"},
     {"username": "PalmquistGrip", "email": "emiley@holdtight.com", "password": "@PalmquistPower", "first_name": "Emiley", "last_name": "Palmquist"},
     {"username": "TopherSummit", "email": "topher@nottopher.com", "password": "@LudlowLedge", "first_name": "Topher", "last_name": "Ludlow"},
@@ -77,7 +77,7 @@ locations_list = [
     {"place": "Dumbarton Rock", "city": "Dumbarton", "state": "West Dunbartonshire", "country": "Scotland"},
     {"place": "Black Canyon of the Gunnison", "city": "Montrose", "state": "Colorado", "country": "USA"},
     {"place": "Flatanger Cave", "city": "Flatanger", "state": "Trøndelag", "country": "Norway"},
-    {"place": "Sardinia", "city": "", "state": "Sardinia", "country": "Italy"},
+    {"place": "Sardinia", "city": "Nuoro", "state": "Sardinia", "country": "Italy"},
     {"place": "The Hurricave", "city": "Hanshelleren", "state": "Nordland", "country": "Norway"},
     {"place": "The Diamond", "city": "Estes Park", "state": "Colorado", "country": "USA"},
     {"place": "Squamish", "city": "Squamish", "state": "British Columbia", "country": "Canada"},
@@ -94,7 +94,7 @@ def make_locations():
     for location_dict in locations_list:
         location = Location(
             place=location_dict["place"],
-            crag_name=location_dict["crag_name"],
+            # crag_name=location_dict["crag_name"],
             city=location_dict["city"],
             state=location_dict['state'],
             #image=location_dict["image"],

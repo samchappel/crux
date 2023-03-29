@@ -16,9 +16,9 @@ class Location(db.Model, SerializerMixin):
     __tablename__ = 'locations'
 
     id = db.Column(db.Integer, primary_key=True)
-    crag_name = db.Column(db.String, nullable=False)
+    # crag_name = db.Column(db.String, nullable=False)
     place = db.Column(db.String, nullable=False)
-    image = db.Column(db.String)
+    # image = db.Column(db.String)
     city = db.Column(db.String, nullable=False)
     state = db.Column(db.String)
     country = db.Column(db.String, nullable=False)
@@ -26,11 +26,11 @@ class Location(db.Model, SerializerMixin):
     routes = db.relationship('Route', backref='location')
     serialize_rules = ('-routes',)
 
-    @validates('crag_name')
-    def validate_name(self, key, value):
-        if not value:
-            raise ValueError('Crag name must be provided')
-        return value
+    # @validates('crag_name')
+    # def validate_name(self, key, value):
+    #     if not value:
+    #         raise ValueError('Crag name must be provided')
+    #     return value
     @validates('place')
     def validate_place(self, key, value):
         if not value:
