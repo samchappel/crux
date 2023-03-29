@@ -57,10 +57,10 @@ def make_climbers():
         climber = Climber(
             username=climber_dict["username"],
             email=climber_dict["email"],
-            password=climber_dict["password"],
             first_name=climber_dict["first_name"],
             last_name=climber_dict["last_name"]
         )
+        climber.password_hash = climber_dict["password"]
         climbers.append(climber)
 
     db.session.add_all(climbers)
@@ -77,7 +77,7 @@ locations_list = [
     {"place": "Dumbarton Rock", "city": "Dumbarton", "state": "West Dunbartonshire", "country": "Scotland"},
     {"place": "Black Canyon of the Gunnison", "city": "Montrose", "state": "Colorado", "country": "USA"},
     {"place": "Flatanger Cave", "city": "Flatanger", "state": "Trøndelag", "country": "Norway"},
-    {"place": "Sardinia", "city": "", "state": "Sardinia", "country": "Italy"},
+    {"place": "Sardinia", "city": "Sardinia", "state": "Sardinia", "country": "Italy"},
     {"place": "The Hurricave", "city": "Hanshelleren", "state": "Nordland", "country": "Norway"},
     {"place": "The Diamond", "city": "Estes Park", "state": "Colorado", "country": "USA"},
     {"place": "Squamish", "city": "Squamish", "state": "British Columbia", "country": "Canada"},
@@ -94,7 +94,6 @@ def make_locations():
     for location_dict in locations_list:
         location = Location(
             place=location_dict["place"],
-            crag_name=location_dict["crag_name"],
             city=location_dict["city"],
             state=location_dict['state'],
             #image=location_dict["image"],

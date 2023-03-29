@@ -1,22 +1,15 @@
-
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import MetaData
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.ext.hybrid import hybrid_property
 import re
 
-metadata = MetaData(naming_convention={
-    "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
-})
-
-db = SQLAlchemy(metadata=metadata)
+from config import bcrypt, db
 
 class Location(db.Model, SerializerMixin):
     __tablename__ = 'locations'
 
     id = db.Column(db.Integer, primary_key=True)
-    crag_name = db.Column(db.String, nullable=False)
     place = db.Column(db.String, nullable=False)
     image = db.Column(db.String)
     city = db.Column(db.String, nullable=False)
@@ -26,11 +19,6 @@ class Location(db.Model, SerializerMixin):
     routes = db.relationship('Route', backref='location')
     serialize_rules = ('-routes',)
 
-    @validates('crag_name')
-    def validate_name(self, key, value):
-        if not value:
-            raise ValueError('Crag name must be provided')
-        return value
     @validates('place')
     def validate_place(self, key, value):
         if not value:
@@ -58,7 +46,8 @@ class Route(db.Model, SerializerMixin):
     image = db.Column(db.String)
     location_id = db.Column(db.Integer, db.ForeignKey('locations.id'))
     
-    reviews = db.relationship('Review', backref='route', primaryjoin='Review.route_id == Route.id')
+    #reviews = db.relationship('Review', backref='route', primaryjoin='Review.route_id == Route.id')
+    reviews = db.relationship('Review', backref='route')
     climbers = association_proxy('reviews', 'climber')
     serialize_rules = ('-reviews',)
     
@@ -95,7 +84,7 @@ class Review(db.Model, SerializerMixin):
     climber_id = db.Column(db.Integer, db.ForeignKey('climbers.id'))
     route_id = db.Column(db.Integer, db.ForeignKey('routes.id'))
 
-    serialize_rules = ('-climbers', '-routes', '-locations', '-created_at', '-updated_at')
+    serialize_rules = ('-climber', '-route', '-created_at', '-updated_at')
 
 
     @validates('star_rating')
@@ -121,14 +110,26 @@ class Climber(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, nullable=False, unique=True)
     email = db.Column(db.String, nullable=False, unique=True)
-    password = db.Column(db.String, nullable=False)
+    _password_hash = db.Column(db.String, nullable=False)
+    admin = db.Column(db.String, default=False)
     first_name = db.Column(db.String, nullable=False)
     last_name = db.Column(db.String)
 
     reviews = db.relationship('Review', backref='climber')
     routes = association_proxy('reviews', 'route')
     serialize_rules = ('-reviews',)
+
+    @hybrid_property
+    def password_hash(self):
+        return self._password_hash
     
+    @password_hash.setter
+    def password_hash(self, password):
+        password_hash = bcrypt.generate_password_hash(password.encode('utf-8'))
+        self._password_hash = password_hash.decode('utf-8')
+
+    def authenticate(self, password):
+        return bcrypt.check_password_hash(self._password_hash, password.encode('utf-8'))
 
     @validates('username')
     def validate_username(self, key, username):
@@ -166,6 +167,9 @@ class Climber(db.Model, SerializerMixin):
         if not value:
             raise ValueError('First name must be provided')
         return value
+    
+    def __repr__(self):
+        return f'CLIMBER: ID: {self.id}, Name {self.first_name}, Username: {self.username}, Admin: {self.admin}'
     
 
 
