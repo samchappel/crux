@@ -57,10 +57,10 @@ def make_climbers():
         climber = Climber(
             username=climber_dict["username"],
             email=climber_dict["email"],
-            password=climber_dict["password"],
             first_name=climber_dict["first_name"],
             last_name=climber_dict["last_name"]
         )
+        climber.password_hash = climber_dict["password"]
         climbers.append(climber)
 
     db.session.add_all(climbers)
@@ -94,7 +94,6 @@ def make_locations():
     for location_dict in locations_list:
         location = Location(
             place=location_dict["place"],
-            # crag_name=location_dict["crag_name"],
             city=location_dict["city"],
             state=location_dict['state'],
             #image=location_dict["image"],
