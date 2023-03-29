@@ -97,7 +97,7 @@ class RouteByID(Resource):
 api.add_resource(RouteByID, '/route/<int:id>')
 
 def get_featured_routes():
-    top_routes = db.session.query(Route, db.func.avg(Review.star_rating).label('average_star_rating')).join(Review).group_by(Route.id).order_by(db.func.avg(Review.star_rating).desc()).limit(3).all()
+    top_routes = db.session.query(Route, db.func.avg(Review.star_rating).label('average_star_rating')).join(Review).group_by(Route.id).order_by(db.func.avg(Review.star_rating).desc()).limit(10).all()
     return top_routes
 
 class FeaturedRoutes(Resource):
