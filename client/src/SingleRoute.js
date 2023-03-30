@@ -18,8 +18,28 @@ function SingleRoute(){
     }, [id])
     
     if (!isLoaded) return <h1>Loading...</h1>;
-    const { name, style, grade, image, location} = route
-
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const monthNames = [
+            'January', 'February', 'March', 'April', 'May', 'June', 'July',
+            'August', 'September', 'October', 'November', 'December',
+        ];
+        
+        const month = monthNames[date.getMonth()];
+        const day = date.getDate();
+        const year = date.getFullYear();
+        
+        return `${month} ${day}, ${year}`;
+        };
+    const { name, style, grade, image, location, reviews} = route
+    const reviewsToDisplay = reviews.map((review)=> {
+        return <div><p>star rating: {review.star_rating}</p>
+        <p>safety rating: {review.safety_rating}</p>
+        <p>quality rating: {review.quality_rating}</p>
+        <p>comment: {review.comment}</p>
+        <p>created at: {formatDate(review.created_at)}</p>
+        </div>
+    });
     return(
         <div className="single-route">
         <div className="single-nontext">
@@ -32,6 +52,8 @@ function SingleRoute(){
         <p>Style: {style}</p>
         <p>Grade: {grade}</p>
         <p>Location: {location.place} </p>
+        <p>Reviews:</p>
+        <p>{reviewsToDisplay}</p>
         </div>
     </div>
     )

@@ -67,7 +67,7 @@ class RouteByID(Resource):
         route = Route.query.filter_by(id=id).first()
         #if not route:
          #   abort(404, "Route not found")
-        route_dict = route.to_dict()
+        route_dict = route.to_dict(rules=("reviews", "-reviews.climber"))
         response = make_response(
             route_dict,
             200
