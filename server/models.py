@@ -85,7 +85,7 @@ class Review(db.Model, SerializerMixin):
     climber_id = db.Column(db.Integer, db.ForeignKey('climbers.id'))
     route_id = db.Column(db.Integer, db.ForeignKey('routes.id'))
 
-    serialize_rules = ('-climber', '-route', '-created_at', '-updated_at')
+    serialize_rules = ('-climber', '-route', '-updated_at')
 
 
     @validates('star_rating')
