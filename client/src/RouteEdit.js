@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom';
 import { useFormik } from "formik";
 import { useHistory } from 'react-router-dom';
 
-function RouteEdit() { //{climber} add
+function RouteEdit({climber}) {
     const history = useHistory();
     const {id} = useParams();  
     const [route, setRoute] = useState({
@@ -50,9 +50,9 @@ function RouteEdit() { //{climber} add
 
 
     if (!isLoaded) return <h1>Loading...</h1>;
-    // if ((climber&&climber.is_admin === false) || (!climber)) {
-    //     return <h1>Cannot edit this Route</h1>
-    // } else {
+    if ((climber&&climber.is_admin === false) || (!climber)) {
+        return <h1>Cannot edit this Route</h1>
+    } else {
         return (
             <>
                 <div className='new-route-form'>
@@ -79,6 +79,6 @@ function RouteEdit() { //{climber} add
             </>
         );
     }
-
+}
 
 export default RouteEdit
