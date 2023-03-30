@@ -9,7 +9,7 @@ function SingleRoute(){
     
     useEffect(() => {
         console.log('in useEffect')
-        fetch(`http://localhost:5555/routes/${id}`)
+        fetch(`/routes/${id}`)
         .then((r)=> r.json())
         .then((route)=> {
             setRoute(route);
@@ -26,6 +26,9 @@ function SingleRoute(){
             <h2>{name}</h2>
             <img className="single-image" src={image} alt={name} />
             <Link to={`/routes/${id}/edit`}><p className="linkToEdit">Edit This Route</p></Link>
+        </div>
+        <div className="tick">
+            <Link to={`/routes/${id}/ticks`}><p className="linkToTick">Add Tick</p></Link>
         </div>
         <div className="single-center">
         <h3 className="single-name">{name}</h3>
