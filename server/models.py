@@ -2,6 +2,7 @@ from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.ext.hybrid import hybrid_property
+from sqlalchemy import Date
 import re
 
 from config import bcrypt, db
@@ -116,6 +117,7 @@ class Climber(db.Model, SerializerMixin):
     last_name = db.Column(db.String)
 
     reviews = db.relationship('Review', backref='climber')
+    ticks = db.relationship('Tick', backref='climber')
     routes = association_proxy('reviews', 'route')
     serialize_rules = ('-reviews',)
 
@@ -170,3 +172,31 @@ class Climber(db.Model, SerializerMixin):
     
     def __repr__(self):
         return f'CLIMBER: ID: {self.id}, Name {self.first_name}, Username: {self.username}, Admin: {self.admin}'
+
+class Tick(db.Model, SerializerMixin):
+    __tablename__ = 'ticks'
+
+    id = db.Column(db.Integer, primary_key=True)
+    climber_id = db.Column(db.Integer, db.ForeignKey('climbers.id'))
+    route_id = db.Column(db.Integer, db.ForeignKey('routes.id'))
+    date = db.Column(Date, nullable=False)
+    notes = db.Column(db.String)
+    # solo = db.Column(db.Boolean, default=False)
+    # toprope = db.Column(db.Boolean, default=False)
+    # follow = db.Column(db.Boolean, default=False)
+    # lead_onsight = db.Column(db.Boolean, default=False)
+    # lead_flash = db.Column(db.Boolean, default=False)
+    # lead_redpoint = db.Column(db.Boolean, default=False)
+    # lead_pinkpoint = db.Column(db.Boolean, default=False)
+    # lead_fell_hung = db.Column(db.Boolean, default=False)
+    notes = db.Column(db.String)
+
+    route = db.relationship('Route', backref='ticks')
+
+    @validates('date')
+    def validate_date(self, key, value):
+        if not value:
+            raise ValueError('Date must be provided')
+        return value
+
+    
