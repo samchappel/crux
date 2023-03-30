@@ -263,3 +263,45 @@ form {
   font-size: 20px;
   cursor: pointer;
 }
+
+.single-route {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  background-color: #88837e;
+  color: #335364;
+}
+
+.single-nontext {
+  margin-right: 20px;
+}
+
+.single-name {
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+.single-image {
+  max-width: 500px;
+  max-height: 500px;
+  margin-bottom: 10px;
+}
+
+.link-to-edit {
+  display: block;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #10abd8;
+}
+
+.link-to-edit:hover {
+  color: #335364;
+}
+
+.single-center p {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}

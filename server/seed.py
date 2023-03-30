@@ -167,7 +167,7 @@ routes_list = [
     {"name": "La Esencia de la Resistencia", "style": "Sport", "grade": "5.15a", "image": "https://imgcdn.ukc2.com/i/182465?fm=jpg&time=1564143946&s=0a4079c3be0d5fd6dc576d816faa0dbb", "location_id": 4},
     {"name": "La Fuerza de la Gravedad", "style": "Sport", "grade": "5.15a", "image": "https://www.desnivel.com/images/2018/02/talomartin-climbing-pedriza-upm-7982.jpg", "location_id": 4},
     {"name": "The Kaukulator", "style": "Trad", "grade": "5.12c", "image": "https://gripped.com/wp-content/uploads/2022/02/The-Rostrum-3-Copy-1000x675.jpeg", "location_id": 2},
-    {"name": "La Sportiva", "style": "Sport", "grade": "5.14b", "image": "https://cdn-files.apstatic.com/climb/111781910_medium_1494317576.jpg", "location_id": 8},
+    {"name": "Nosferatu", "style": "Sport", "grade": "5.11d", "image": "https://images.squarespace-cdn.com/content/v1/639c76aa805d7f1fe174d3c6/1460f369-ed73-46f3-98d8-fdb8162abac5/IMG_5739.jpg?format=750w", "location_id": 8},
     {"name": "Esclatamasters", "style": "Sport", "grade": "5.15a", "image": "https://imgcdn.ukc2.com/i/383589?fm=jpg&time=1647002355&dpr=1&w=815&s=3f133069c4e1e1e8532a3966c9d6111c", "location_id": 12},
     {"name": "El Bon Combat", "style": "Sport", "grade": "5.15b", "image": "https://www.climbing.com/wp-content/uploads/2022/05/El-Bon-Combat-scaled.jpg", "location_id": 12},
     {"name": "Churning in the Wake", "style": "Sport", "grade": "5.13a", "image": "https://mountainproject.com/assets/photos/climb/119144682_medium_1593709439.jpg?cache=1635820350", "location_id": 1}
