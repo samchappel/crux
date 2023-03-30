@@ -62,7 +62,7 @@ function App() {
           <RouteEdit climber={climber}/>
         </Route>
         <Route path="/routes/:id">
-          <SingleRoute/>
+          <SingleRoute climber={climber}/>
         </Route>
         <Route path="/routes">
           <ClimbingRoutesContainer routes={routes} setRoutes={setRoutes} />
