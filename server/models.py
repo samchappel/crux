@@ -50,7 +50,7 @@ class Route(db.Model, SerializerMixin):
     #reviews = db.relationship('Review', backref='route', primaryjoin='Review.route_id == Route.id')
     reviews = db.relationship('Review', backref='route')
     climbers = association_proxy('reviews', 'climber')
-    serialize_rules = ('-reviews',)
+    serialize_rules = ('-reviews', 'location')
     
 
     @validates('name')
@@ -192,6 +192,8 @@ class Tick(db.Model, SerializerMixin):
     notes = db.Column(db.String)
 
     route = db.relationship('Route', backref='ticks')
+
+    serialize_rules = ('-routes',)
 
     @validates('date')
     def validate_date(self, key, value):
