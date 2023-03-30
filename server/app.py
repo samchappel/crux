@@ -258,6 +258,7 @@ class AuthorizedSession(Resource):
             climber = Climber.query.filter_by(id=session['climber_id']).first()
             response = make_response(
                 climber.to_dict(),
+        
                 200
             )
             return response
