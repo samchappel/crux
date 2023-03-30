@@ -74,6 +74,7 @@ function RouteEdit() { //{climber} add
                         <input type="text"  name="image" value={formik.values.image} onChange={formik.handleChange} />
                         <br></br>
                         <button type="submit" value='Save'>Update</button>
+                        <button type="button" onClick={() => history.goBack()}>Cancel</button>
                     </form>
                 </div>
             </>

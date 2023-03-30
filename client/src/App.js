@@ -14,24 +14,27 @@ function App() {
   const [page, setPage] = useState("/")
   const [routes, setRoutes] = useState([])
   const [climber, setClimber] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         fetchClimber()
     },[])
 
-    const fetchClimber = () => (
-        fetch('/authorized')
-        .then(res => {
-            if(res.ok){
-            res.json()
-            .then(data => {
-                setClimber(data)
-            })
-            } else {
-            setClimber(null)
-            }
+    const fetchClimber = () => {
+      fetch('/authorized')
+        .then((res) => {
+          if (res.ok) {
+            setIsLoggedIn(true); 
+            return res.json();
+          } else {
+            setIsLoggedIn(false); 
+            setClimber(null);
+          }
         })
-    )
+        .then((data) => {
+          setClimber(data);
+        });
+    };
 
   useEffect(() => {
     fetch('http://localhost:5555/routes')

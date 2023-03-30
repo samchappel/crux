@@ -3,12 +3,17 @@ import { Link } from 'react-router-dom';
 
 function NavBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  
   useEffect(() => {
-    const user = sessionStorage.getItem('climber');
-    if (user) {
-      setIsLoggedIn(true);
-    }
+    fetch('/authorized')
+      .then(res => {
+        if (res.ok) {
+          setIsLoggedIn(true);
+        } else {
+          setIsLoggedIn(false);
+        }
+      })
+      .catch(error => console.error('Error checking auth status:', error));
   }, []);
 
   return (
@@ -21,8 +26,9 @@ function NavBar() {
           <>
             <Link to="/profile">Profile</Link>
             <Link to="/logout" onClick={() => {
-              sessionStorage.removeItem('climber');
-              setIsLoggedIn(false);
+              fetch('/logout', { method: 'DELETE' })
+                .then(() => setIsLoggedIn(false))
+                .catch(error => console.error('Error logging out:', error));
             }}>Log Out</Link>
           </>
         ) : (

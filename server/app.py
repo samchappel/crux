@@ -219,6 +219,21 @@ class TickByID(Resource):
 api.add_resource(Ticks, '/ticks')
 api.add_resource(TickByID, '/ticks/<int:id>')
 
+class ClimberTicks(Resource):
+    def get(self):
+        if 'climber_id' not in session:
+            abort(401, "Unauthorized")
+        climber_id = session['climber_id']
+        ticks = Tick.query.filter_by(climber_id=climber_id).all()
+        routes = [tick.route.to_dict() for tick in ticks]
+        response = make_response(
+            routes,
+            200
+        )
+        return response
+
+api.add_resource(ClimberTicks, '/climber/ticks')
+
 class Signup(Resource):
     def post(self):
         form_json = request.get_json()

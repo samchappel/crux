@@ -1,9 +1,11 @@
-import{useEffect, useState} from "react";
-import {Link, useParams} from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { Link, useHistory, useParams } from "react-router-dom";
+
 
 function SingleRoute({climber}){
     const[route, setRoute]= useState(null)
     const [isLoaded, setIsLoaded] = useState(false);
+     const history = useHistory();
 
     const{ id } = useParams()
     
@@ -48,9 +50,7 @@ function SingleRoute({climber}){
     return(
         <div className="single-route">
         <div className="single-nontext">
-            <h2>{name}</h2>
             <img className="single-image" src={image} alt={name} />
-            <Link to={`/routes/${id}/edit`}><p className="linkToEdit">Edit This Route</p></Link>
         </div>
         <div className="tick">
             <Link to={`/routes/${id}/ticks`}><p className="linkToTick">Add Tick</p></Link>
@@ -62,9 +62,14 @@ function SingleRoute({climber}){
         <p>Location: {location.place} </p>
         <p>Reviews:</p>
         <p>{reviewsToDisplay}</p>
+        <Link to={`/routes/${id}/edit`}>
+          <button>Edit This Route</button>
+        </Link>
+        <br />
+        <button onClick={() => history.goBack()}>Back</button>
         </div>
     </div>
-    )
+  );
 }
 
 export default SingleRoute;
