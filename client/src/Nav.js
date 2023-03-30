@@ -5,7 +5,7 @@ function NavBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const user = localStorage.getItem('user'); // Replace 'user' with specific key
+    const user = sessionStorage.getItem('climber');
     if (user) {
       setIsLoggedIn(true);
     }
@@ -21,7 +21,7 @@ function NavBar() {
           <>
             <Link to="/profile">Profile</Link>
             <Link to="/log_out" onClick={() => {
-              localStorage.removeItem('user');
+              sessionStorage.removeItem('climber');
               setIsLoggedIn(false);
             }}>Log Out</Link>
           </>
