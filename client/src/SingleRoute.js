@@ -33,7 +33,7 @@ function SingleRoute({climber}){
         
         return `${month} ${day}, ${year}`;
         };
-    const { name, style, grade, image, location, reviews} = route
+    const { name, style, grade, image, location, reviews, ticks} = route
     const reviewsToDisplay = reviews.map((review)=> {
         return <div><p>star rating: {review.star_rating}</p>
         <p>safety rating: {review.safety_rating}</p>
@@ -47,7 +47,12 @@ function SingleRoute({climber}){
         ) : null}
         </div>
     });
-    console.log(reviews)
+    const addTick = ticks.map((tick) => {
+        return <div><p>Date Ticked: {tick.date}</p>
+        <p>Notes: {tick.notes}</p>
+        </div>
+    })
+
     return(
         <div className="single-route">
         <div className="single-nontext">
@@ -64,6 +69,9 @@ function SingleRoute({climber}){
         {reviews === true ? <div><p>Reviews:</p>
         <p>{reviewsToDisplay}</p></div>
         : null}
+        <p>Reviews:</p>
+        <p>{addTick}</p>
+        <p>{reviewsToDisplay}</p>
         <Link to={`/routes/${id}/edit`}>
         <button>Edit This Route</button>
         </Link>
