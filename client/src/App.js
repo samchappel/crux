@@ -8,7 +8,7 @@ import NewRouteForm from "./NewRouteForm";
 import Profile from "./Profile";
 import LogIn from "./LogIn";
 import SingleRoute from "./SingleRoute"
-//import RouteEdit from "./RouteEdit"
+import RouteEdit from "./RouteEdit"
 
 function App() {
   const [page, setPage] = useState("/")
@@ -55,9 +55,9 @@ function App() {
         <Route path="/featured_routes">
           <Home />
         </Route>
-        {/* <Route path="/routes/:id/edit">
-          <RouteEdit climber={climber}/>
-        </Route> */}
+        <Route path="/routes/:id/edit">
+          <RouteEdit /*climber={climber}*//>
+        </Route>
         <Route path="/routes/:id">
           <SingleRoute/>
         </Route>
