@@ -162,7 +162,7 @@ routes_list = [
     {"name": "The Grand Illusion", "style": "Sport", "grade": "5.14c", "image": "https://gripped.com/wp-content/uploads/2021/06/DSC00497.jpg", "location_id": 22},
     {"name": "La Fabela pa la Enmienda", "style": "Sport", "grade": "5.15a", "image": "https://d3byf4kaqtov0k.cloudfront.net/news/635870096154355425_1653739_514205505424576_921315126296280953_n.jpg", "location_id": 12},
     {"name": "Cobra Crack", "style": "Trad", "grade": "5.14c", "image": "https://gripped.com/wp-content/uploads/2015/10/Will-stanhope-1200x675.jpg", "location_id": 11},
-    {"name": "The Shield", "style": "Big Wall", "grade": "VI 5.13b", "image": "https://i1.wp.com/www.climbingyosemite.com/wp-content/uploads/2020/08/1.jpg", "location_id": 2},
+    {"name": "The Shield", "style": "Trad", "grade": "VI 5.13b", "image": "https://i1.wp.com/www.climbingyosemite.com/wp-content/uploads/2020/08/1.jpg", "location_id": 2},
     {"name": "Ali Hulk Sit Start Extension Total", "style": "Boulder", "grade": "V16", "image": "https://www.lacrux.com/wp-content/uploads/2020/10/Video-Dave-Graham-bei-der-Begehung-von-Ali-Hulk-Extension-Total-Sit-Start.jpg", "location_id": 4},
     {"name": "La Esencia de la Resistencia", "style": "Sport", "grade": "5.15a", "image": "https://imgcdn.ukc2.com/i/182465?fm=jpg&time=1564143946&s=0a4079c3be0d5fd6dc576d816faa0dbb", "location_id": 4},
     {"name": "La Fuerza de la Gravedad", "style": "Sport", "grade": "5.15a", "image": "https://www.desnivel.com/images/2018/02/talomartin-climbing-pedriza-upm-7982.jpg", "location_id": 4},
