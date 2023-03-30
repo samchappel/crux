@@ -20,13 +20,13 @@ function NavBar() {
         {isLoggedIn ? (
           <>
             <Link to="/profile">Profile</Link>
-            <Link to="/log_out" onClick={() => {
+            <Link to="/logout" onClick={() => {
               sessionStorage.removeItem('climber');
               setIsLoggedIn(false);
             }}>Log Out</Link>
           </>
         ) : (
-          <Link to="/log_in">Log In/Sign Up</Link>
+          <Link to="/login">Log In/Sign Up</Link>
         )}
       </nav>
     </div>
