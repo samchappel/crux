@@ -58,6 +58,10 @@ function App() {
         <Route path="/routes/:id/edit">
           <RouteEdit climber={climber}/>
         </Route>
+        {/* <Route path="/routes/:id/ticks">
+          <AddTick climber={climber}/>
+        </Route> */}
+
         <Route path="/routes/:id">
           <SingleRoute/>
         </Route>
