@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import Modal from 'react-modal';
 
 const initialValuesSignUp = {
   username: '',
@@ -59,10 +60,10 @@ function LogIn() {
         },
         body: JSON.stringify(values),
       });
-
+  
       if (response.ok) {
         const climber = await response.json();
-        localStorage.setItem('climber', JSON.stringify(climber));
+        sessionStorage.setItem('climber', JSON.stringify(climber));
         history.push('/profile');
       } else {
         actions.setSubmitting(false);
@@ -87,6 +88,7 @@ function LogIn() {
       if (response.ok) {
         const climber = await response.json();
         localStorage.setItem('climber', JSON.stringify(climber));
+        //need to update this from localstorage
         history.push('/profile');
       } else {
         actions.setSubmitting(false);
@@ -102,77 +104,83 @@ function LogIn() {
     setShowSignUp(prevState => !prevState);
   }
 
-    return (
-        <div>
-        <p>LOG IN</p>
-        <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={handleLogin}
-        >
-            {({ isSubmitting }) => (
-            <Form>
-                <div>
-                <Field type="username" name="username" placeholder="Username" />
-                <ErrorMessage name="username" />
-                </div>
-                <div>
-                <Field type="password" name="password" placeholder="Password" />
-                <ErrorMessage name="password" />
-                </div>
-                <button type="submit" disabled={isSubmitting}>
-                Log In
-                </button>
-                <ErrorMessage name="general" />
-            </Form>
-            )}
-        </Formik>
-    
-        <hr />
-    
-        <p>NEED TO SIGN UP? CLICK HERE!</p>
-  <button onClick={() => setShowSignUp(!showSignUp)}>
-    {showSignUp ? 'Hide Sign Up' : 'Show Sign Up'}
-  </button>
-  {showSignUp && (
-    <Formik
-      initialValues={initialValuesSignUp}
-      validationSchema={signUpValidationSchema}
-      onSubmit={handleSignUp}
-    >
-      {({ isSubmitting }) => (
-        <Form>
-          <div>
-            <Field type="text" name="username" placeholder="Username" />
-            <ErrorMessage name="username" />
+  return (
+    <div>
+      <p>LOG IN</p>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleLogin}
+      >
+        {({ isSubmitting }) => (
+          <Form>
+            <div>
+              <Field type="username" name="username" placeholder="Username" />
+              <ErrorMessage name="username" />
+            </div>
+            <div>
+              <Field type="password" name="password" placeholder="Password" />
+              <ErrorMessage name="password" />
+            </div>
+            <button type="submit" disabled={isSubmitting}>
+              Log In
+            </button>
+            <button type="button" onClick={toggleSignUp}>
+              Create Account
+            </button>
+            <ErrorMessage name="general" />
+          </Form>
+        )}
+      </Formik>
+      {showSignUp && (
+        <div className="modal">
+          <div className="modal-content">
+            <button className="close-button" onClick={toggleSignUp}>
+              X
+            </button>
+            <h2>Create an Account</h2>
+            <Formik
+              initialValues={initialValuesSignUp}
+              validationSchema={signUpValidationSchema}
+              onSubmit={handleSignUp}
+            >
+              {({ isSubmitting }) => (
+                <Form>
+                  <div>
+                    <Field type="username" name="username" placeholder="Username" />
+                    <ErrorMessage name="username" />
+                  </div>
+                  <div>
+                    <Field type="email" name="email" placeholder="Email" />
+                    <ErrorMessage name="email" />
+                  </div>
+                  <div>
+                    <Field type="password" name="password" placeholder="Password" />
+                    <ErrorMessage name="password" />
+                  </div>
+                  <div>
+                    <Field type="firstName" name="firstName" placeholder="First Name" />
+                    <ErrorMessage name="firstName" />
+                  </div>
+                  <div>
+                    <Field type="lastName" name="lastName" placeholder="Last Name" />
+                    <ErrorMessage name="lastName" />
+                  </div>
+                  <button type="submit" disabled={isSubmitting}>
+                    Create Account
+                  </button>
+                  <button type="button" onClick={toggleSignUp}>
+                    Cancel
+                  </button>
+                  <ErrorMessage name="general" />
+                </Form>
+              )}
+            </Formik>
           </div>
-          <div>
-            <Field type="email" name="email" placeholder="Email" />
-            <ErrorMessage name="email" />
-          </div>
-          <div>
-            <Field type="password" name="password" placeholder="Password" />
-            <ErrorMessage name="password" />
-          </div>
-          <div>
-            <Field type="text" name="firstName" placeholder="First Name" />
-            <ErrorMessage name="firstName" />
-          </div>
-          <div>
-            <Field type="text" name="lastName" placeholder="Last Name" />
-            <ErrorMessage name="lastName" />
-          </div>
-          <button type="submit" disabled={isSubmitting}>
-            Sign Up
-          </button>
-          <ErrorMessage name="general" />
-        </Form>
+        </div>
       )}
-    </Formik>
-  )}
-</div>
-    );
+    </div>
+  )
 }
 
 export default LogIn;
-
