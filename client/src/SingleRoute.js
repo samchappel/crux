@@ -1,7 +1,7 @@
 import{useEffect, useState} from "react";
 import {Link, useParams} from 'react-router-dom';
 
-function SingleRoute(){
+function SingleRoute({climber}){
     const[route, setRoute]= useState(null)
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -38,6 +38,11 @@ function SingleRoute(){
         <p>quality rating: {review.quality_rating}</p>
         <p>comment: {review.comment}</p>
         <p>created at: {formatDate(review.created_at)}</p>
+        {climber.id === review.climber_id ? (
+            <Link to={`/review/${review.id}/edit`}>
+            <p className="linkToEdit">Edit Review</p>
+            </Link>
+        ) : null}
         </div>
     });
     return(

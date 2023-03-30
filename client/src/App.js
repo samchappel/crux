@@ -58,12 +58,8 @@ function App() {
         <Route path="/routes/:id/edit">
           <RouteEdit climber={climber}/>
         </Route>
-        {/* <Route path="/routes/:id/ticks">
-          <AddTick climber={climber}/>
-        </Route> */}
-
         <Route path="/routes/:id">
-          <SingleRoute/>
+          <SingleRoute climber={climber}/>
         </Route>
         <Route path="/routes">
           <ClimbingRoutesContainer routes={routes} setRoutes={setRoutes} />
