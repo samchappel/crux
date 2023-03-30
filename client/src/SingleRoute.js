@@ -47,6 +47,7 @@ function SingleRoute({climber}){
         ) : null}
         </div>
     });
+    console.log(reviews)
     return(
         <div className="single-route">
         <div className="single-nontext">
@@ -60,10 +61,11 @@ function SingleRoute({climber}){
         <p>Style: {style}</p>
         <p>Grade: {grade}</p>
         <p>Location: {location.place} </p>
-        <p>Reviews:</p>
-        <p>{reviewsToDisplay}</p>
+        {reviews === true ? <div><p>Reviews:</p>
+        <p>{reviewsToDisplay}</p></div>
+        : null}
         <Link to={`/routes/${id}/edit`}>
-          <button>Edit This Route</button>
+        <button>Edit This Route</button>
         </Link>
         <br />
         <button onClick={() => history.goBack()}>Back</button>
