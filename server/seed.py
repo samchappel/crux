@@ -1,7 +1,9 @@
 from random import choice as rc, randint
 #from faker import Faker
 from app import app
-from models import db, Climber, Location, Route, Review
+from models import db, Climber, Location, Route, Review, Tick
+from datetime import datetime
+
 
 #fake = Faker()
 
@@ -119,17 +121,17 @@ print('locations committed')
 print('creating routes')
 routes_list = [    
     {"name": "To Bolt or Not to Be", "style": "Sport", "grade": "5.14a", "image": "https://images.squarespace-cdn.com/content/v1/5d535837ae1b79000132a86a/1565743790818-73W4WJSK3UKO86LYQ3QR/image-asset.jpeg?format=1000w", "location_id": 1},    
-    {"name": "The Mandala", "style": "Bouldering", "grade": "V12", "image": "https://i.ytimg.com/vi/szvISeet5gI/maxresdefault.jpg", "location_id": 13},    
+    {"name": "The Mandala", "style": "Boulder", "grade": "V12", "image": "https://i.ytimg.com/vi/szvISeet5gI/maxresdefault.jpg", "location_id": 13},    
     {"name": "The Chief", "style": "Trad", "grade": "5.11c", "image": "https://image.thecrag.com/10x286:2490x1588/fit-in/1200x630/c9/96/c996c1ee1c0974d0b94681bc755003ec10c873ff", "location_id": 11},    
-    {"name": "El Capitan", "style": "Multi-pitch", "grade": "5.13d", "image": "https://cdn.britannica.com/95/100595-050-55D897A5/El-Capitan-Yosemite-National-Park-California.jpg", "location_id": 2},    
-    {"name": "The Nose", "style": "Multi-pitch", "grade": "5.14a", "image": "https://snowbrains.com/wp-content/uploads/2016/10/29ECB93800000578-3137377-The_Nose_of_El_Capitan_is_one_of_the_most_challenging_routes_up_-a-10_1435147442416.jpg", "location_id": 2},    
+    {"name": "Passage to Freedom", "style": "Trad", "grade": "5.13d", "image": "https://www.mensjournal.com/.image/t_share/MTk2MTM2NTU1Mzk5MzU3NTg1/caldwell-honnold-slide.jpg", "location_id": 2},    
+    {"name": "The Nose", "style": "Trad", "grade": "5.14a", "image": "https://snowbrains.com/wp-content/uploads/2016/10/29ECB93800000578-3137377-The_Nose_of_El_Capitan_is_one_of_the_most_challenging_routes_up_-a-10_1435147442416.jpg", "location_id": 2},    
     {"name": "Biographie", "style": "Sport", "grade": "5.15a", "image": "https://i.ytimg.com/vi/C_N8znD3exI/maxresdefault.jpg", "location_id": 3},
     {"name": "Dreamcatcher", "style": "Sport", "grade": "5.14d", "image": "https://www.planetmountain.com/img/1/39357.jpg", "location_id": 11},
     {"name": "La Dura Dura", "style": "Sport", "grade": "5.15c", "image": "https://www.climbing.com/wp-content/uploads/2014/03/la-dura-complete-the-full-story-of-the.png", "location_id": 13},
     {"name": "Jumbo Love", "style": "Sport", "grade": "5.15b", "image": "https://www.rockandice.com/wp-content/uploads/2017/09/Ethan_Pringle_Jumbo_Love_COVER.jpg", "location_id": 14},
     {"name": "Perfecto Mundo", "style": "Sport", "grade": "5.15c", "image": "https://www.rockandice.com/wp-content/uploads/2018/05/Screen-Shot-2018-05-10-at-9.17.23-AM-e1525965509232.png", "location_id": 12},
     {"name": "Es Pontas", "style": "Deep Water Solo", "grade": "5.15a", "image": "https://gripped.com/wp-content/uploads/2018/10/Es-Pontas.jpg", "location_id": 4},
-    {"name": "The Salathe Wall", "style": "Multi-pitch", "grade": "5.13b", "image": "https://www.rockandice.com/wp-content/uploads/2017/12/findlay-salathe-1-e1512432264795.jpg", "location_id": 2},
+    {"name": "The Salathe Wall", "style": "Trad", "grade": "5.13b", "image": "https://www.rockandice.com/wp-content/uploads/2017/12/findlay-salathe-1-e1512432264795.jpg", "location_id": 2},
     {"name": "Rhapsody", "style": "Trad", "grade": "E11 7a", "image": "https://www.planetmountain.com/img/1/36993.jpg", "location_id": 5},
     {"name": "The Bachar-Yerian", "style": "Trad", "grade": "5.11d", "image": "https://gripped.com/wp-content/uploads/2020/04/Bachar-Yerian.jpg", "location_id": 2},
     {"name": "The Diamond", "style": "Trad", "grade": "5.14a", "image": "http://www.alpinist.com/media/ALP19/alp19-24-1.jpg", "location_id": 15},
@@ -146,7 +148,7 @@ routes_list = [
     {"name": "Soul Slinger", "style": "Boulder", "grade": "V9", "image": "https://i.ytimg.com/vi/pSk5A3mpVB4/maxresdefault.jpg", "location_id": 13},
     {"name": "Shadowboxing", "style": "Sport", "grade": "5.14d", "image": "https://i.ytimg.com/vi/Ip928VM0i0g/maxresdefault.jpg", "location_id": 18},
     {"name": "Dihedral Wall", "style": "Trad", "grade": "5.14a", "image": "https://www.planetmountain.com/img/1/41826.jpg", "location_id": 2},
-    {"name": "The Dawn Wall", "style": "Multi-pitch", "grade": "5.15a", "image": "https://images.squarespace-cdn.com/content/v1/5e55a2a23510ad4437888347/1668115466255-V6X8755W1XX4URN86CKE/Tommy-Caldwell_Image_Austin-Siadak.jpeg?format=1500w", "location_id": 2},
+    {"name": "The Dawn Wall", "style": "Trad", "grade": "5.15a", "image": "https://images.squarespace-cdn.com/content/v1/5e55a2a23510ad4437888347/1668115466255-V6X8755W1XX4URN86CKE/Tommy-Caldwell_Image_Austin-Siadak.jpeg?format=1500w", "location_id": 2},
     {"name": "The Reticent Wall", "style": "Trad", "grade": "5.13c", "image": "https://www.thebmc.co.uk/Handlers/ArticleImageHandler.ashx?id=7879&index=0&w=605&h=434", "location_id": 2},
     {"name": "Astro Dog", "style": "Trad", "grade": "5.11", "image": "https://www.patagonia.com/blog/wp-content/uploads/2016/07/IMG_0198_2-768x513.jpg.webp", "location_id": 6},
     {"name": "Kaleidoscope", "style": "Sport", "grade": "5.13c", "image": "https://www.climbing.com/wp-content/uploads/2021/04/266824736_SimekNEW-1024x683.jpg?width=1200", "location_id": 19},
@@ -155,13 +157,13 @@ routes_list = [
     {"name": "La Voie Petit", "style": "Trad", "grade": "5.13c", "image": "https://i.ytimg.com/vi/nil9QfV6SaQ/maxresdefault.jpg", "location_id": 3},
     {"name": "La Capella", "style": "Sport", "grade": "5.15b", "image": "https://www.thebmc.co.uk/media/images/Will-Bosi_Siurana_Last%20night_credit%20Band%20of%20Birds-4574.jpg", "location_id": 12},
     {"name": "Blackbeard's Tears", "style": "Sport", "grade": "5.14c", "image": "https://dmmclimbing.com/getattachment/Climbers/Ethan-Pringle/T_MEADOWS_08_16_19_CANON_02_2350.jpg?lang=en-GB&height=623&width=934", "location_id": 20},
-    {"name": "The Fly", "style": "Bouldering", "grade": "V13", "image": "https://www.climbing.com/wp-content/uploads/2008/04/video-still-of-kevin-jorgeson-about-to-.gif", "location_id": 21},
-    {"name": "King Line", "style": "Bouldering", "grade": "V14", "image": "https://i.ytimg.com/vi/3vEJS2AwGA8/maxresdefault.jpg", "location_id": 8},
+    {"name": "The Fly", "style": "Boulder", "grade": "V13", "image": "https://www.climbing.com/wp-content/uploads/2008/04/video-still-of-kevin-jorgeson-about-to-.gif", "location_id": 21},
+    {"name": "King Line", "style": "Boulder", "grade": "V14", "image": "https://i.ytimg.com/vi/3vEJS2AwGA8/maxresdefault.jpg", "location_id": 8},
     {"name": "The Grand Illusion", "style": "Sport", "grade": "5.14c", "image": "https://gripped.com/wp-content/uploads/2021/06/DSC00497.jpg", "location_id": 22},
     {"name": "La Fabela pa la Enmienda", "style": "Sport", "grade": "5.15a", "image": "https://d3byf4kaqtov0k.cloudfront.net/news/635870096154355425_1653739_514205505424576_921315126296280953_n.jpg", "location_id": 12},
     {"name": "Cobra Crack", "style": "Trad", "grade": "5.14c", "image": "https://gripped.com/wp-content/uploads/2015/10/Will-stanhope-1200x675.jpg", "location_id": 11},
     {"name": "The Shield", "style": "Big Wall", "grade": "VI 5.13b", "image": "https://i1.wp.com/www.climbingyosemite.com/wp-content/uploads/2020/08/1.jpg", "location_id": 2},
-    {"name": "Ali Hulk Sit Start Extension Total", "style": "Bouldering", "grade": "V16", "image": "https://www.lacrux.com/wp-content/uploads/2020/10/Video-Dave-Graham-bei-der-Begehung-von-Ali-Hulk-Extension-Total-Sit-Start.jpg", "location_id": 4},
+    {"name": "Ali Hulk Sit Start Extension Total", "style": "Boulder", "grade": "V16", "image": "https://www.lacrux.com/wp-content/uploads/2020/10/Video-Dave-Graham-bei-der-Begehung-von-Ali-Hulk-Extension-Total-Sit-Start.jpg", "location_id": 4},
     {"name": "La Esencia de la Resistencia", "style": "Sport", "grade": "5.15a", "image": "https://imgcdn.ukc2.com/i/182465?fm=jpg&time=1564143946&s=0a4079c3be0d5fd6dc576d816faa0dbb", "location_id": 4},
     {"name": "La Fuerza de la Gravedad", "style": "Sport", "grade": "5.15a", "image": "https://www.desnivel.com/images/2018/02/talomartin-climbing-pedriza-upm-7982.jpg", "location_id": 4},
     {"name": "The Kaukulator", "style": "Trad", "grade": "5.12c", "image": "https://gripped.com/wp-content/uploads/2022/02/The-Rostrum-3-Copy-1000x675.jpeg", "location_id": 2},
@@ -363,12 +365,94 @@ def make_reviews():
     db.session.commit()
 print('review committed')
 
+# Create ticks
+ticks_list = [
+    {"climber_id": 1, "route_id": 1, "notes": "Got it first try, felt great!", "date": "2023-02-14"},
+    {"climber_id": 1, "route_id": 2, "notes": "Took a few tries, but got it clean in the end.", "date": "2023-04-20"},
+    {"climber_id": 1, "route_id": 3, "notes": "Couldn't quite make it to the top, will have to come back and try again when I'm not hung over.", "date": "2023-01-01"},
+    {"climber_id": 2, "route_id": 4, "notes": "Fun climb, felt solid even without a rope!", "date": "2023-03-19"},
+    {"climber_id": 2, "route_id": 5, "notes": "Good warm-up climb, felt nice and easy.", "date": "2023-04-21"},
+    {"climber_id": 2, "route_id": 6, "notes": "Fun route, seconded my friend who led it.", "date": "2022-09-20"},
+    {"climber_id": 3, "route_id": 7, "notes": "First time leading this grade, felt really good to onsight it!", "date": "2023-01-17"},
+    {"climber_id": 3, "route_id": 8, "notes": "Worked out the beta and got it clean on the second try.", "date": "2023-03-14"},
+    {"climber_id": 3, "route_id": 9, "notes": "Pushed my limit on this one, had a few falls but eventually got it!", "date": "2023-02-17"},
+    {"climber_id": 4, "route_id": 10, "notes": "Good challenge, felt really exposed up there.", "date": "2023-04-20"},
+    {"climber_id": 4, "route_id": 11, "notes": "Fun climb, tried out some new beta.", "date": "2023-04-21"},
+    {"climber_id": 4, "route_id": 12, "notes": "First time climbing with this partner, good to get to know their style.", "date": "2022-12-02"},
+    {"climber_id": 5, "route_id": 13, "notes": "Got it on the first try, surprised myself with how solid I felt!", "date": "2022-12-03"},
+    {"climber_id": 5, "route_id": 14, "notes": "Wanted to work out the moves on this one, felt good to get it clean.", "date": "2022-01-18"},
+    {"climber_id": 5, "route_id": 15, "notes": "Pushed myself on this one, fell a few times but kept working at it.", "date": "2023-02-17"},
+    {"climber_id": 6, "route_id": 16, "notes": "Good to get some practice in without a rope.", "date": "2022-12-02"},
+    {"climber_id": 6, "route_id": 17, "notes": "Fun climb, good for practicing footwork.", "date": "2022-12-03"},
+    {"climber_id": 6, "route_id": 18, "notes": "Good challenge, took a few falls but eventually got it.", "date": "2023-02-14"},
+    {"climber_id": 7, "route_id": 5, "notes": "Finally sent this after 10 attempts, felt amazing!", "date": "2022-02-15"},
+    {"climber_id": 8, "route_id": 5, "notes": "So stoked to flash this one!", "date": "2022-03-01"},
+    {"climber_id": 8, "route_id": 2, "notes": "First time trying this route, definitely going to come back and lead it!", "date": "2022-03-05"},
+    {"climber_id": 9, "route_id": 2, "notes": "Got lucky with the beta on this one, felt great to onsight!", "date": "2022-03-07"},
+    {"climber_id": 9, "route_id": 6, "notes": "Sent this one after a few tries, psyched to come back and try it again!", "date": "2022-03-11"},
+    {"climber_id": 10, "route_id": 6, "notes": "Flashed this one after working it on top rope. Felt so good to finally send it!", "date": "2022-03-14"},
+    {"climber_id": 11, "route_id": 6, "notes": "Sent this one on my first attempt after hanging draws. Can't wait to try it again clean!", "date": "2022-03-18"},
+    {"climber_id": 12, "route_id": 7, "notes": "Really struggled on this one, need to work on my technique for overhangs!", "date": "2022-03-22"},
+    {"climber_id": 12, "route_id": 7, "notes": "Took a few tries but finally sent it. Psyched for more overhangs!", "date": "2022-03-25"}
+
+    # {"climber_id": 1, "route_id": 1, "style": "flash", "notes": "Got it first try, felt great!"},
+    # {"climber_id": 1, "route_id": 2, "style": "send", "notes": "Took a few tries, but got it clean in the end."},
+    # {"climber_id": 1, "route_id": 3, "style": "attempt", "notes": "Couldn't quite make it to the top, will have to come back and try again."},
+    # {"climber_id": 2, "route_id": 4, "style": "solo", "notes": "Fun climb, felt solid even without a rope!"},
+    # {"climber_id": 2, "route_id": 5, "style": "toprope", "notes": "Good warm-up climb, felt nice and easy."},
+    # {"climber_id": 2, "route_id": 6, "style": "follow", "notes": "Fun route, seconded my friend who led it."},
+    # {"climber_id": 3, "route_id": 7, "style": "lead", "sub_style": "onsight", "notes": "First time leading this grade, felt really good to onsight it!"},
+    # {"climber_id": 3, "route_id": 8, "style": "lead", "sub_style": "redpoint", "notes": "Worked out the beta and got it clean on the second try."},
+    # {"climber_id": 3, "route_id": 9, "style": "lead", "sub_style": "fell/hung", "notes": "Pushed my limit on this one, had a few falls but eventually got it!"},
+    # {"climber_id": 4, "route_id": 10, "style": "solo", "notes": "Good challenge, felt really exposed up there."},
+    # {"climber_id": 4, "route_id": 11, "style": "toprope", "notes": "Fun climb, tried out some new beta."},
+    # {"climber_id": 4, "route_id": 12, "style": "follow", "notes": "First time climbing with this partner, good to get to know their style."},
+    # {"climber_id": 5, "route_id": 13, "style": "lead", "sub_style": "flash", "notes": "Got it on the first try, surprised myself with how solid I felt!"},
+    # {"climber_id": 5, "route_id": 14, "style": "lead", "sub_style": "pinkpoint", "notes": "Wanted to work out the moves on this one, felt good to get it clean."},
+    # {"climber_id": 5, "route_id": 15, "style": "lead", "sub_style": "fell/hung", "notes": "Pushed myself on this one, fell a few times but kept working at it."},
+    # {"climber_id": 6, "route_id": 16, "style": "solo", "notes": "Good to get some practice in without a rope."},
+    # {"climber_id": 6, "route_id": 17, "style": "toprope", "notes": "Fun climb, good for practicing footwork."},
+    # {"climber_id": 6, "route_id": 18, "style": "follow", "notes": "Good challenge, took a few falls but eventually got it."},
+    # {"climber_id": 7, "route_id": 5, "style": "send", "notes": "Finally sent this after 10 attempts, felt amazing!", "date": "2022-02-15"},
+    # {"climber_id": 8, "route_id": 5, "style": "lead", "sub_style": "flash", "notes": "So stoked to flash this one!", "date": "2022-03-01"},
+    # {"climber_id": 8, "route_id": 2, "style": "toprope", "notes": "First time trying this route, definitely going to come back and lead it!", "date": "2022-03-05"},
+    # {"climber_id": 9, "route_id": 2, "style": "lead", "sub_style": "onsight", "notes": "Got lucky with the beta on this one, felt great to onsight!", "date": "2022-03-07"},
+    # {"climber_id": 9, "route_id": 6, "style": "lead", "sub_style": "redpoint", "notes": "Sent this one after a few tries, psyched to come back and try it again!", "date": "2022-03-11"},
+    # {"climber_id": 10, "route_id": 6, "style": "lead", "sub_style": "flash", "notes": "Flashed this one after working it on top rope. Felt so good to finally send it!", "date": "2022-03-14"},
+    # {"climber_id": 11, "route_id": 6, "style": "lead", "sub_style": "pinkpoint", "notes": "Sent this one on my first attempt after hanging draws. Can't wait to try it again clean!", "date": "2022-03-18"},
+    # {"climber_id": 12, "route_id": 7, "style": "toprope", "notes": "Really struggled on this one, need to work on my technique for overhangs!", "date": "2022-03-22"},
+    # {"climber_id": 12, "route_id": 7, "style": "lead", "sub_style": "redpoint", "notes": "Took a few tries but finally sent it. Psyched for more overhangs!", "date": "2022-03-25"}
+]
+print('tick created')
+
+def make_ticks():
+
+    Tick.query.delete()
+
+    ticks = []
+
+    for tick_dict in ticks_list:
+        date_str = tick_dict["date"]
+        date = datetime.strptime(date_str, "%Y-%m-%d").date()
+        tick = Tick(
+            climber_id=tick_dict["climber_id"],
+            route_id=tick_dict["route_id"],
+            date=date,
+            notes=tick_dict["notes"]
+        )
+        ticks.append(tick)
+
+    db.session.add_all(ticks)
+    db.session.commit()
+print('tick committed')
+
 if __name__ == '__main__':
     with app.app_context():
         make_climbers()
         make_locations()
         make_routes()
         make_reviews()
+        make_ticks()
 
 # climbing_routes = [
 #     {

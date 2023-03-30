@@ -146,6 +146,79 @@ class ReviewByID(Resource):
 
 api.add_resource(ReviewByID, '/review/<int:id>')
 
+class Ticks(Resource):
+    def post(self):
+        try:
+            data = request.get_json()
+            tick = Tick(
+                date=data["date"],
+                style=data["style"],
+                notes=data.get("notes"),
+                climber_id=data["climber_id"],
+                route_id=data["route_id"]
+            )
+            db.session.add(tick)
+            db.session.commit()
+        except Exception as e:
+            return make_response({
+                "errors": [e.__str__()]
+            }, 422)
+
+        response = make_response(
+            tick.to_dict(),
+            201
+        )
+        return response
+
+    def get(self):
+        ticks = [tick.to_dict() for tick in Tick.query.all()]
+        response = make_response(
+            ticks,
+            200
+        )
+        return response
+
+
+class TickByID(Resource):
+    def get(self, id):
+        tick = Tick.query.filter_by(id=id).first()
+        if not tick:
+            abort(404, "Tick not found")
+        tick_dict = tick.to_dict()
+        response = make_response(
+            tick_dict,
+            200
+        )
+        return response
+
+    def patch(self, id):
+        tick = Tick.query.filter_by(id=id).first()
+        if not tick:
+            return make_response({'error': 'Tick not found'}, 404)
+        data = request.get_json()
+        for attr in data:
+            setattr(tick, attr, data[attr])
+        db.session.add(tick)
+        db.session.commit()
+
+        return make_response(tick.to_dict(), 202)
+
+    def delete(self, id):
+        tick = Tick.query.filter_by(id=id).first()
+        if not tick:
+            make_response(
+                {"error": "tick not found"},
+                404
+            )
+        db.session.delete(tick)
+        db.session.commit()
+
+        return make_response('', 204)
+
+
+api.add_resource(Ticks, '/ticks')
+api.add_resource(TickByID, '/ticks/<int:id>')
+
 class Signup(Resource):
     def post(self):
         form_json = request.get_json()
