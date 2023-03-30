@@ -47,7 +47,6 @@ function SingleRoute({climber}){
         ) : null}
         </div>
     });
-
     const addTick = ticks.map((tick) => {
         return <div><p>Date Ticked: {tick.date}</p>
         <p>Notes: {tick.notes}</p>
@@ -67,11 +66,14 @@ function SingleRoute({climber}){
         <p>Style: {style}</p>
         <p>Grade: {grade}</p>
         <p>Location: {location.place} </p>
+        {reviews === true ? <div><p>Reviews:</p>
+        <p>{reviewsToDisplay}</p></div>
+        : null}
         <p>Reviews:</p>
         <p>{addTick}</p>
         <p>{reviewsToDisplay}</p>
         <Link to={`/routes/${id}/edit`}>
-          <button>Edit This Route</button>
+        <button>Edit This Route</button>
         </Link>
         <br />
         <button onClick={() => history.goBack()}>Back</button>
