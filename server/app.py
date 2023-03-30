@@ -1,6 +1,6 @@
 from flask import  request, make_response, session, abort, jsonify
 from flask_restful import  Resource
-from models import Climber, Location, Route, Review
+from models import Climber, Location, Route, Review, Tick
 from config import db, api, app
 
 

@@ -70,7 +70,7 @@ function App() {
         <Route path="/profile">
           <Profile />
         </Route>
-        <Route path="/log_in">
+        <Route path="/login">
           <LogIn />
         </Route>
       </Switch>
