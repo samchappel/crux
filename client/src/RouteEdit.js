@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom';
 import { useFormik } from "formik";
 import { useHistory } from 'react-router-dom';
 
-function RouteEdit({climber}) {
+function RouteEdit() { //{climber} add
     const history = useHistory();
     const {id} = useParams();  
     const [route, setRoute] = useState({
@@ -11,19 +11,22 @@ function RouteEdit({climber}) {
         style: '',
         grade: '',
         image: '',
-        //location: ''
+        //locationPlace: ''
         });
-    const [isLoaded, setIsLoaded] = useState(true);
+        const [isLoaded, setIsLoaded] = useState(true);
+        useEffect(()=>{
+            console.log(id)
+            fetch(`http://localhost:5555/routes/${id}`)
+            .then(res=>res.json())
+            .then((data) => {
+                setRoute(data);
+                setIsLoaded(true);
+            })
+        }, [id])
 
     const formik = useFormik({
         enableReinitialize: true,
-        initialValues: {
-            name: route.name,
-            style: route.style,
-            grade: route.grade,
-            image: route.image
-            //location_id: route.location_id, //change location?
-        },
+        initialValues: route,
         onSubmit: (values) => {
             fetch(`/routes/${id}`, {
                 method: 'PATCH',
@@ -45,19 +48,11 @@ function RouteEdit({climber}) {
         }
     })
 
-    useEffect(()=>{
-        fetch('/routes/'+id)
-        .then(res=>res.json())
-        .then((data) => {
-            setRoute(data);
-            setIsLoaded(current => !current);
-        })
-    }, [id])
 
     if (!isLoaded) return <h1>Loading...</h1>;
-    if ((climber&&climber.is_admin === false) || (!climber)) {
-        return <h1>Cannot edit this Route</h1>
-    } else {
+    // if ((climber&&climber.is_admin === false) || (!climber)) {
+    //     return <h1>Cannot edit this Route</h1>
+    // } else {
         return (
             <>
                 <div className='new-route-form'>
@@ -84,6 +79,6 @@ function RouteEdit({climber}) {
             </>
         );
     }
-}
+
 
 export default RouteEdit

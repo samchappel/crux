@@ -65,8 +65,8 @@ api.add_resource(Routes, '/routes')
 class RouteByID(Resource):
     def get(self, id):
         route = Route.query.filter_by(id=id).first()
-        if not route:
-            abort(404, "Route not found")
+        #if not route:
+         #   abort(404, "Route not found")
         route_dict = route.to_dict()
         response = make_response(
             route_dict,
