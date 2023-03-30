@@ -13,25 +13,25 @@ import RouteEdit from "./RouteEdit"
 function App() {
   const [page, setPage] = useState("/")
   const [routes, setRoutes] = useState([])
-  // const [climber, setClimber] = useState(null);
+  const [climber, setClimber] = useState(null);
 
-  //   useEffect(() => {
-  //       fetchClimber()
-  //   },[])
+    useEffect(() => {
+        fetchClimber()
+    },[])
 
-  //   const fetchClimber = () => (
-  //       fetch('/authorized')
-  //       .then(res => {
-  //           if(res.ok){
-  //           res.json()
-  //           .then(data => {
-  //               setClimber(data)
-  //           })
-  //           } else {
-  //           setClimber(null)
-  //           }
-  //       })
-  //   )
+    const fetchClimber = () => (
+        fetch('/authorized')
+        .then(res => {
+            if(res.ok){
+            res.json()
+            .then(data => {
+                setClimber(data)
+            })
+            } else {
+            setClimber(null)
+            }
+        })
+    )
 
   useEffect(() => {
     fetch('http://localhost:5555/routes')
@@ -56,7 +56,7 @@ function App() {
           <Home />
         </Route>
         <Route path="/routes/:id/edit">
-          <RouteEdit /*climber={climber}*//>
+          <RouteEdit climber={climber}/>
         </Route>
         <Route path="/routes/:id">
           <SingleRoute/>
