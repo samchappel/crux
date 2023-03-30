@@ -119,7 +119,7 @@ class Climber(db.Model, SerializerMixin):
     reviews = db.relationship('Review', backref='climber')
     ticks = db.relationship('Tick', backref='climber')
     routes = association_proxy('reviews', 'route')
-    serialize_rules = ('-reviews',)
+    serialize_rules = ('-reviews', '-ticks')
 
     @hybrid_property
     def password_hash(self):
@@ -189,9 +189,8 @@ class Tick(db.Model, SerializerMixin):
     # lead_redpoint = db.Column(db.Boolean, default=False)
     # lead_pinkpoint = db.Column(db.Boolean, default=False)
     # lead_fell_hung = db.Column(db.Boolean, default=False)
-    notes = db.Column(db.String)
 
-    route = db.relationship('Route', backref='ticks')
+    routes = db.relationship('Route', backref='ticks')
 
     serialize_rules = ('-routes',)
 
