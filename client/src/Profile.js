@@ -20,7 +20,7 @@ function Profile({ climber, history }) {
     }).catch((error) => console.log(error));
   }, []);
 
-  const filteredTicks = ticks.filter((tick) => tick.climber_id === climber.id);
+  const filteredTicks = ticks.filter((tick) => climber && climber.id === tick.climber_id);
   const ticksWithRouteName = filteredTicks.map((tick) => {
     const route = routes.find((route) => route.id === tick.route_id);
     return {
@@ -55,7 +55,7 @@ function Profile({ climber, history }) {
     };
 
     const reviewsToDisplay = reviews
-    .filter((review) => review.climber_id === climber.id)
+    .filter((review) => climber && climber.id === review.climber_id)
     .map((review) => {
       const route = routes.find((route) => route.id === review.route_id);
       const routeName = route ? route.name : null;
