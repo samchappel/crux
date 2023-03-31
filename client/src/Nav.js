@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 function NavBar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const history = useHistory();
   
   useEffect(() => {
     fetch('/authorized')
@@ -16,6 +17,15 @@ function NavBar() {
       .catch(error => console.error('Error checking auth status:', error));
   }, []);
 
+  const handleLogout = () => {
+    fetch('/logout', { method: 'DELETE' })
+      .then(() => {
+        setIsLoggedIn(false);
+        history.push('/login');
+      })
+      .catch(error => console.error('Error logging out:', error));
+  };
+
   return (
     <div className="nav-container">
       <nav className="nav-bar">
@@ -25,11 +35,7 @@ function NavBar() {
         {isLoggedIn ? (
           <>
             <Link to="/profile">Profile</Link>
-            <Link to="/logout" onClick={() => {
-              fetch('/logout', { method: 'DELETE' })
-                .then(() => setIsLoggedIn(false))
-                .catch(error => console.error('Error logging out:', error));
-            }}>Log Out</Link>
+            <Link to="/logout" onClick={handleLogout}>Log Out</Link>
           </>
         ) : (
           <Link to="/login">Log In/Sign Up</Link>

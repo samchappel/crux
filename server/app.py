@@ -73,6 +73,7 @@ class RouteByID(Resource):
             200
         )
         return response
+        
 api.add_resource(RouteByID, '/routes/<int:id>')
 
 def get_featured_routes():
@@ -102,7 +103,9 @@ class Reviews(Resource):
                 star_rating=data["star_rating"],
                 safety_rating=data["safety_rating"],
                 quality_rating=data["quality_rating"],
-                comment=data["comment"]
+                comment=data["comment"],
+                climber_id = session['climber_id'],
+                route_id = int(data["route_id"])
             ) #how to attach climber and route, send IDs from front end in the request
 
             db.session.add(review)

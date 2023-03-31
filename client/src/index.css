@@ -469,3 +469,55 @@ form {
   padding-top: 40px;
   padding-bottom: 30px;
 }
+
+.login-title {
+  text-align: center;
+  color: #335364;
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+
+.review-title {
+  text-align: center;
+  color: #335364;
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+
+.route-title {
+  text-align: center;
+  color: #335364;
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+
+.tick-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tick-modal-content {
+  color: #335364;
+  background-color: #88837e;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.tick-close-button {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  background-color: #53565a;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
