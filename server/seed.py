@@ -153,7 +153,7 @@ routes_list = [
     {"name": "Astro Dog", "style": "Trad", "grade": "5.11", "image": "https://www.patagonia.com/blog/wp-content/uploads/2016/07/IMG_0198_2-768x513.jpg.webp", "location_id": 6},
     {"name": "Kaleidoscope", "style": "Sport", "grade": "5.13c", "image": "https://www.climbing.com/wp-content/uploads/2021/04/266824736_SimekNEW-1024x683.jpg?width=1200", "location_id": 19},
     {"name": "The Reckoning", "style": "Sport", "grade": "5.14d", "image": "https://www.cathedralmountainguides.com/wp-content/uploads/fullsizeoutput_1335-600x600.jpeg", "location_id": 11},
-    {"name": "The Edge of Time", "style": "Trad", "grade": "5.12a", "image": "https://mountainproject.com/assets/photos/climb/107561751_medium_1494197300.jpg?cache=1679092525", "location_id": 11},
+    {"name": "The Edge of Time", "style": "Sport", "grade": "5.9+", "image": "https://mountainproject.com/assets/photos/climb/107561751_medium_1494197300.jpg?cache=1679092525", "location_id": 15},
     {"name": "La Voie Petit", "style": "Trad", "grade": "5.13c", "image": "https://i.ytimg.com/vi/nil9QfV6SaQ/maxresdefault.jpg", "location_id": 3},
     {"name": "La Capella", "style": "Sport", "grade": "5.15b", "image": "https://www.thebmc.co.uk/media/images/Will-Bosi_Siurana_Last%20night_credit%20Band%20of%20Birds-4574.jpg", "location_id": 12},
     {"name": "Blackbeard's Tears", "style": "Sport", "grade": "5.14c", "image": "https://dmmclimbing.com/getattachment/Climbers/Ethan-Pringle/T_MEADOWS_08_16_19_CANON_02_2350.jpg?lang=en-GB&height=623&width=934", "location_id": 20},
