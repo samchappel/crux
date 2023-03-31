@@ -71,7 +71,7 @@ function App() {
           <NewRouteForm />
         </Route>
         <Route path="/profile">
-          <Profile />
+          <Profile climber={climber} />
         </Route>
         <Route path="/login">
           <LogIn />

@@ -10,7 +10,6 @@ function SingleRoute({climber}){
     const{ id } = useParams()
     
     useEffect(() => {
-        console.log('in useEffect')
         fetch(`/routes/${id}`)
         .then((r)=> r.json())
         .then((route)=> {
