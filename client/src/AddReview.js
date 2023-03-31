@@ -8,11 +8,11 @@ function AddReview() { //{climber} add
     const history = useHistory();
     const {id} = useParams();  
     const [review, setReview] = useState({
-        StarRating: '',
-        SafetyRating: '',
-        QualityRating: '',
-        Comment: '',
-        RouteId: id
+        star_rating: '',
+        safety_rating: '',
+        quality_rating: '',
+        comment: '',
+        route_id: id
         });
 
         const formik = useFormik({

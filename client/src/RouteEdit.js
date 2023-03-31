@@ -16,7 +16,7 @@ function RouteEdit() { //{climber} add
         const [isLoaded, setIsLoaded] = useState(true);
         useEffect(()=>{
             console.log(id)
-            fetch(`http://localhost:5555/routes/${id}`)
+            fetch(`/routes/${id}`)
             .then(res=>res.json())
             .then((data) => {
                 setRoute(data);
@@ -56,7 +56,7 @@ function RouteEdit() { //{climber} add
         return (
             <>
                 <div className='new-route-form'>
-                    <h2>Edit Route</h2>
+                    <h2 className='route-title'>Edit Route</h2>
                     <form onSubmit={formik.handleSubmit} >
                         <label >Name:</label>
                         <input type="text"  name="name" value={formik.values.name} onChange={formik.handleChange} />

@@ -109,7 +109,7 @@ function LogIn() {
 
   return (
     <div>
-      <p>LOG IN</p>
+      <h2 className='login-title'>LOG IN</h2>
       <Formik
         initialValues={initialValues}
         onSubmit={handleLogin}

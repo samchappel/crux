@@ -56,7 +56,7 @@ function ReviewEdit({climber}) { //{climber} add
         return (
             <>
                 <div className='new-review-form'>
-                    <h2>Edit Review</h2>
+                    <h2 className='review-title'>Edit Review</h2>
                     <form onSubmit={formik.handleSubmit} >
                         <label >Star Rating:</label>
                         <input type="text"  name="star_rating" value={formik.values.star_rating} onChange={formik.handleChange} />
