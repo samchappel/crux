@@ -10,6 +10,7 @@ import LogIn from "./LogIn";
 import SingleRoute from "./SingleRoute"
 import RouteEdit from "./RouteEdit"
 import AddReview from "./AddReview"
+import ReviewEdit from "./ReviewEdit"
 
 function App() {
   const [page, setPage] = useState("/")
@@ -64,6 +65,8 @@ function App() {
         </Route>
         <Route path="/routes/:id/addreview">
           <AddReview climber={climber}/>
+        <Route path="/reviews/:id/edit">
+          <ReviewEdit climber={climber}/>
         </Route>
         <Route path="/routes/:id">
           <SingleRoute climber={climber}/>
