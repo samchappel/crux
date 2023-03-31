@@ -50,6 +50,7 @@ class Route(db.Model, SerializerMixin):
     #reviews = db.relationship('Review', backref='route', primaryjoin='Review.route_id == Route.id')
     reviews = db.relationship('Review', backref='route')
     climbers = association_proxy('reviews', 'climber')
+    #ticks = association_proxy()
     serialize_rules = ('-reviews', 'location')
     
 
