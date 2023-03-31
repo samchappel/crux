@@ -28,9 +28,9 @@ function Home() {
   }
 
   return (
-    <div>
-      <h1>Welcome to Crux!</h1>
-      <p>Check out some of our featured routes:</p>
+    <div className="home-container">
+      <h1 className="home-title">Welcome to Crux!</h1>
+      <h3 className="home-subtitle">Check out the highest rated climbs:</h3>
       {/* Display featured routes */}
       {featuredRoutes.length > 0 ? (
         <ul className="cards">

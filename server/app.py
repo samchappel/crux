@@ -186,6 +186,8 @@ class Ticks(Resource):
         )
         return response
 
+api.add_resource(Ticks, '/ticks')
+
 
 class TickByID(Resource):
     def get(self, id):
@@ -224,7 +226,6 @@ class TickByID(Resource):
         return make_response('', 204)
 
 
-api.add_resource(Ticks, '/ticks')
 api.add_resource(TickByID, '/ticks/<int:id>')
 
 class ClimberTicks(Resource):
