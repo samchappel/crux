@@ -38,6 +38,22 @@ function SingleRoute({climber}){
         return `${month} ${day}, ${year}`;
         };
 
+        function handleDeleteReview(id) {
+            fetch(`/reviews/${id}`, {
+              method: "DELETE",
+            })
+              .then((response) => {
+                if (response.ok) {
+                  // Delete successful, do something if necessary
+                } else {
+                  throw new Error("Failed to delete review");
+                }
+              })
+              .catch((error) => {
+                console.error(error);
+              });
+          }
+
     const { name, styleRoute, grade, image, location, reviews, routeId} = route
  
     const reviewsToDisplay = reviews.map((review)=> {
@@ -94,7 +110,7 @@ function SingleRoute({climber}){
         </div>
         ) : null}
 
-        <Link to={`/routes/${id}/edit`}>
+        <Link to={`/routes/${id}`}>
           <button>Edit This Route</button>
         </Link>
         <div>
@@ -115,9 +131,13 @@ function SingleRoute({climber}){
         <p className="review-card__rating">Quality Rating: {review.quality_rating}</p>
         <p className="review-card__comment">Comment: {review.comment}</p>
         {climber.id === review.climber_id ? (
-        <Link to={`/review/${review.id}/edit`}>
+          <div>
+            <Link to={`/reviews/${review.id}/edit`}>
             <button>Edit This Review</button>
-        </Link>
+            </Link>
+            <br />
+            <button onClick={() => handleDeleteReview(review.id)}>Delete Review</button>
+          </div>
         ) : null}
       </div>
     </li>

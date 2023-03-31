@@ -141,18 +141,17 @@ class ReviewByID(Resource):
         db.session.commit()
 
         return make_response(review.to_dict(), 202)
-        
+
     def delete(self, id):
         review = Review.query.filter_by(id=id).first()
         if not review:
-            make_response(
-                {"error": "review not found"},
-                404
-            )
+            return make_response({"error": "review not found"}, 404)
         db.session.delete(review)
         db.session.commit()
 
-api.add_resource(ReviewByID, '/review/<int:id>')
+        return make_response('', 204)
+
+api.add_resource(ReviewByID, '/reviews/<int:id>')
 
 class Ticks(Resource):
     def post(self):

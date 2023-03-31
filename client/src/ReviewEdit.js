@@ -16,7 +16,7 @@ function ReviewEdit({climber}) { //{climber} add
         const [isLoaded, setIsLoaded] = useState(true);
         useEffect(()=>{
             console.log(id)
-            fetch(`http://localhost:5555/reviews/${id}`)
+            fetch(`reviews/${id}`)
             .then(res=>res.json())
             .then((data) => {
                 setReview(data);
@@ -59,16 +59,16 @@ function ReviewEdit({climber}) { //{climber} add
                     <h2>Edit Review</h2>
                     <form onSubmit={formik.handleSubmit} >
                         <label >Star Rating:</label>
-                        <input type="text"  name="name" value={formik.values.star_rating} onChange={formik.handleChange} />
+                        <input type="text"  name="star_rating" value={formik.values.star_rating} onChange={formik.handleChange} />
                         <br></br>
                         <label >Safety Rating:</label>
-                        <input type="text"  name="name" value={formik.values.safety_rating} onChange={formik.handleChange} />
+                        <input type="text"  name="safety_rating" value={formik.values.safety_rating} onChange={formik.handleChange} />
                         <br></br>
                         <label >Quality Rating:</label>
-                        <input type="text"  name="name" value={formik.values.Quality_rating} onChange={formik.handleChange} />
+                        <input type="text"  name="quality_rating" value={formik.values.quality_rating} onChange={formik.handleChange} />
                         <br></br>
                         <label >Comments:</label>
-                        <input type="text"  name="name" value={formik.values.comment} onChange={formik.handleChange} />
+                        <input type="text"  name="comment" value={formik.values.comment} onChange={formik.handleChange} />
                         <br></br>
                         <button type="submit" value='Save'>Update</button>
                         <button type="button" onClick={() => history.goBack()}>Cancel</button>
