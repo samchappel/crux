@@ -5,19 +5,24 @@ import { Link, useHistory, useParams } from "react-router-dom";
 function SingleRoute({climber}){
     const[route, setRoute]= useState(null)
     const [isLoaded, setIsLoaded] = useState(false);
-     const history = useHistory();
+    const[ticks, setTicks] = useState(null)
+    const history = useHistory();
 
     const{ id } = useParams()
     
     useEffect(() => {
-        console.log('in useEffect')
-        fetch(`/routes/${id}`)
-        .then((r)=> r.json())
-        .then((route)=> {
+        console.log('in useEffect');
+        Promise.all([
+            fetch(`/routes/${id}`).then((r) => r.json()),
+            fetch(`/ticks`).then((r) => r.json()),
+        ])
+            .then(([route, ticks]) => {
             setRoute(route);
+            setTicks(ticks);
             setIsLoaded(true);
-        });
-    }, [id])
+            })
+            .catch((error) => console.log(error));
+        }, [id]);
     
     if (!isLoaded) return <h1>Loading...</h1>;
     const formatDate = (dateString) => {
@@ -33,25 +38,38 @@ function SingleRoute({climber}){
         
         return `${month} ${day}, ${year}`;
         };
-    const { name, style, grade, image, location, reviews, ticks} = route
+    const { name, styleRoute, grade, image, location, reviews, routeId} = route
+    console.log(reviews)
     const reviewsToDisplay = reviews.map((review)=> {
+        console.log(review.id)
+        console.log(review.created_at)
         return <div><p>star rating: {review.star_rating}</p>
         <p>safety rating: {review.safety_rating}</p>
         <p>quality rating: {review.quality_rating}</p>
         <p>comment: {review.comment}</p>
         <p>created at: {formatDate(review.created_at)}</p>
-        {climber.id === review.climber_id ? (
+        {climber && climber.id === review.climber_id ? (
             <Link to={`/review/${review.id}/edit`}>
             <p className="linkToEdit">Edit Review</p>
             </Link>
         ) : null}
         </div>
     });
-    const addTick = ticks.map((tick) => {
-        return <div><p>Date Ticked: {tick.date}</p>
-        <p>Notes: {tick.notes}</p>
-        </div>
-    })
+    console.log(ticks)
+    const singleTick = ticks.filter((tick)=> climber && climber.id === tick.climber_id)
+    console.log(singleTick)
+
+    //const {climber_id, route_id, styleTick, date, notes } = tick
+    // console.log(climber.id)
+    // console.log(climber_id)
+    // const addTick =
+    // singleTick ? (
+    //     <div>
+    //         <p>Date Ticked: {singleTick.date}</p>
+    //         <p>Style: {singleTick.styleTick}</p>
+    //         <p>Notes: {singleTick.notes}</p>
+    //     </div>
+    // ) : null;
 
     return(
         <div className="single-route">
@@ -63,15 +81,19 @@ function SingleRoute({climber}){
         </div>
         <div className="single-center">
         <h3 className="single-name">{name}</h3>
-        <p>Style: {style}</p>
+        <p>Style: {styleRoute}</p>
         <p>Grade: {grade}</p>
         <p>Location: {location.place} </p>
         {reviews === true ? <div><p>Reviews:</p>
         <p>{reviewsToDisplay}</p></div>
         : null}
-        <p>Reviews:</p>
-        <p>{addTick}</p>
-        <p>{reviewsToDisplay}</p>
+        {singleTick ? (
+        <div>
+            <p>Date Ticked: {singleTick.date}</p>
+            <p>Style: {singleTick.styleTick}</p>
+            <p>Notes: {singleTick.notes}</p>
+        </div>
+        ) : null}
         <Link to={`/routes/${id}/edit`}>
         <button>Edit This Route</button>
         </Link>
@@ -79,7 +101,7 @@ function SingleRoute({climber}){
         <button onClick={() => history.goBack()}>Back</button>
         </div>
     </div>
-  );
+    );
 }
 
 export default SingleRoute;

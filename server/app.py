@@ -66,7 +66,7 @@ class RouteByID(Resource):
     def get(self, id):
         route = Route.query.filter_by(id=id).first()
         #if not route:
-         #   abort(404, "Route not found")
+        #   abort(404, "Route not found")
         route_dict = route.to_dict(rules=("reviews", "-reviews.climber"))
         response = make_response(
             route_dict,
@@ -87,6 +87,14 @@ class FeaturedRoutes(Resource):
 api.add_resource(FeaturedRoutes, '/featured_routes')
 
 class Reviews(Resource):
+    def get(self):
+        reviews = [review.to_dict() for review in Review.query.all()]
+        response = make_response(
+            reviews,
+            200
+        )
+        return response
+
     def post(self):
         try:
             data = request.get_json()
