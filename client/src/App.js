@@ -65,6 +65,7 @@ function App() {
         </Route>
         <Route path="/routes/:id/addreview">
           <AddReview climber={climber}/>
+        </Route>
         <Route path="/reviews/:id/edit">
           <ReviewEdit climber={climber}/>
         </Route>

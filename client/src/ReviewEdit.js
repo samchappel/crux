@@ -16,7 +16,7 @@ function ReviewEdit({climber}) { //{climber} add
         const [isLoaded, setIsLoaded] = useState(true);
         useEffect(()=>{
             console.log(id)
-            fetch(`reviews/${id}`)
+            fetch(`http://localhost:5555/reviews/${id}`)
             .then(res=>res.json())
             .then((data) => {
                 setReview(data);
