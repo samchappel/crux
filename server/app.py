@@ -87,6 +87,15 @@ class FeaturedRoutes(Resource):
 api.add_resource(FeaturedRoutes, '/featured_routes')
 
 class Reviews(Resource):
+    def get(self):
+        reviews = [review.to_dict() for review in Review.query.all()]
+        response = make_response(
+            reviews,
+            200
+        )
+       
+        return response
+
     def post(self):
         try:
             data = request.get_json()
@@ -178,6 +187,8 @@ class Ticks(Resource):
         )
         return response
 
+api.add_resource(Ticks, '/ticks')
+
 
 class TickByID(Resource):
     def get(self, id):
@@ -216,7 +227,6 @@ class TickByID(Resource):
         return make_response('', 204)
 
 
-api.add_resource(Ticks, '/ticks')
 api.add_resource(TickByID, '/ticks/<int:id>')
 
 class ClimberTicks(Resource):

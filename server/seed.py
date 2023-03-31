@@ -158,7 +158,7 @@ routes_list = [
     {"name": "La Capella", "style": "Sport", "grade": "5.15b", "image": "https://www.thebmc.co.uk/media/images/Will-Bosi_Siurana_Last%20night_credit%20Band%20of%20Birds-4574.jpg", "location_id": 12},
     {"name": "Blackbeard's Tears", "style": "Sport", "grade": "5.14c", "image": "https://dmmclimbing.com/getattachment/Climbers/Ethan-Pringle/T_MEADOWS_08_16_19_CANON_02_2350.jpg?lang=en-GB&height=623&width=934", "location_id": 20},
     {"name": "The Fly", "style": "Boulder", "grade": "V13", "image": "https://www.climbing.com/wp-content/uploads/2008/04/video-still-of-kevin-jorgeson-about-to-.gif", "location_id": 21},
-    {"name": "King Line", "style": "Boulder", "grade": "V14", "image": "https://i.ytimg.com/vi/3vEJS2AwGA8/maxresdefault.jpg", "location_id": 8},
+    {"name": "King Line", "style": "Deep Water Solo", "grade": "V14", "image": "https://i.ytimg.com/vi/3vEJS2AwGA8/maxresdefault.jpg", "location_id": 8},
     {"name": "The Grand Illusion", "style": "Sport", "grade": "5.14c", "image": "https://gripped.com/wp-content/uploads/2021/06/DSC00497.jpg", "location_id": 22},
     {"name": "La Fabela pa la Enmienda", "style": "Sport", "grade": "5.15a", "image": "https://d3byf4kaqtov0k.cloudfront.net/news/635870096154355425_1653739_514205505424576_921315126296280953_n.jpg", "location_id": 12},
     {"name": "Cobra Crack", "style": "Trad", "grade": "5.14c", "image": "https://gripped.com/wp-content/uploads/2015/10/Will-stanhope-1200x675.jpg", "location_id": 11},

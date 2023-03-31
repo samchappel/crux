@@ -102,6 +102,24 @@ main {
   color: #10abd8;
 }
 
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 90px;
+}
+
+.home-title {
+  text-align: center;
+  color: #335364;
+}
+
+.home-subtitle {
+  text-align: center;
+  color: #cad0cf;
+}
+
 #form-wrapper {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -304,4 +322,150 @@ form {
 .single-center p {
   font-size: 1.5rem;
   margin: 10px 0;
+}
+
+.profile-cards {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: "Titillium Web", sans-serif;
+  align-items: flex-start;
+}
+
+.profile-card {
+  margin: 1rem;
+  border-radius: 5px;
+  width: 300px;
+  background-color: #335364;
+  color: #c5bfb5;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.profile-card__image {
+  height: 225px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.profile-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s;
+}
+
+.profile-card__title {
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.profile-card__title h3 {
+  margin-top: 0;
+}
+
+.profile-card__date {
+  margin: 0.5rem 0;
+  text-align: center;
+  color: #10abd8;
+}
+
+.profile-card__notes {
+  margin: 0.5rem 0;
+  text-align: center;
+  color: #c5bfb5;
+}
+
+.profile-card__notes:hover {
+  color: #10abd8;
+}
+
+.review-cards {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: "Titillium Web", sans-serif;
+  align-items: flex-start;
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  border-radius: 5px;
+  width: 300px;
+  background-color: #335364;
+  color: #c5bfb5;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.review-card__content {
+  text-align: center;
+}
+
+.review-card__title {
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.review-card__comment {
+  margin: 0.5rem 0;
+  text-align: center;
+  color: #c5bfb5;
+}
+
+.review-card__comment:hover {
+  color: #10abd8;
+}
+
+.review-card__rating {
+  margin: 0.5rem 0;
+  text-align: center;
+  color: #c5bfb5;
+}
+
+.review-card__rating:hover {
+  color: #10abd8;
+}
+
+.review-card__edit-button {
+  align-self: center;
+}
+
+.review-card__image {
+  height: 225px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.review-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s;
+}
+
+.profile-title {
+  text-align: center;
+  color: #335364;
+  padding-top: 40px;
+  padding-bottom: 30px;
 }
