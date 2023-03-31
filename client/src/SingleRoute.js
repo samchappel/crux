@@ -5,19 +5,23 @@ import { Link, useHistory, useParams } from "react-router-dom";
 function SingleRoute({climber}){
     const[route, setRoute]= useState(null)
     const [isLoaded, setIsLoaded] = useState(false);
-     const history = useHistory();
+    const[ticks, setTicks] = useState(null)
+    const history = useHistory();
 
     const{ id } = useParams()
     
     useEffect(() => {
-        console.log('in useEffect')
-        fetch(`/routes/${id}`)
-        .then((r)=> r.json())
-        .then((route)=> {
+        Promise.all([
+            fetch(`/routes/${id}`).then((r) => r.json()),
+            fetch(`/ticks`).then((r) => r.json()),
+        ])
+            .then(([route, ticks]) => {
             setRoute(route);
+            setTicks(ticks);
             setIsLoaded(true);
-        });
-    }, [id])
+            })
+            .catch((error) => console.log(error));
+        }, [id]);
     
     if (!isLoaded) return <h1>Loading...</h1>;
     const formatDate = (dateString) => {
@@ -34,23 +38,40 @@ function SingleRoute({climber}){
         return `${month} ${day}, ${year}`;
         };
 
-
-
-        
-    const { name, style, grade, image, location, reviews} = route
+    const { name, styleRoute, grade, image, location, reviews, routeId} = route
+ 
     const reviewsToDisplay = reviews.map((review)=> {
+        console.log(review.id)
+        console.log(review.created_at)
         return <div><p>star rating: {review.star_rating}</p>
         <p>safety rating: {review.safety_rating}</p>
         <p>quality rating: {review.quality_rating}</p>
         <p>comment: {review.comment}</p>
         <p>created at: {formatDate(review.created_at)}</p>
-        {climber.id === review.climber_id ? (
+        {climber && climber.id === review.climber_id ? (
             <Link to={`/review/${review.id}/edit`}>
             <p className="linkToEdit">Edit Review</p>
             </Link>
         ) : null}
         </div>
     });
+
+    console.log(ticks)
+    const singleTick = ticks.filter((tick)=> climber && climber.id === tick.climber_id)
+    console.log(singleTick)
+
+    //const {climber_id, route_id, styleTick, date, notes } = tick
+    // console.log(climber.id)
+    // console.log(climber_id)
+    // const addTick =
+    // singleTick ? (
+    //     <div>
+    //         <p>Date Ticked: {singleTick.date}</p>
+    //         <p>Style: {singleTick.styleTick}</p>
+    //         <p>Notes: {singleTick.notes}</p>
+    //     </div>
+    // ) : null;
+
     return(
         <div className="single-route">
         <div className="single-nontext">
@@ -58,10 +79,21 @@ function SingleRoute({climber}){
         </div>
         <div className="single-center">
         <h3 className="single-name">{name}</h3>
-        <p>Style: {style}</p>
+        <p>Style: {styleRoute}</p>
         <p>Grade: {grade}</p>
         <p>Location: {location.place} </p>
-        <p>Reviews:</p>
+
+        {reviews === true ? <div><p>Reviews:</p>
+        <p>{reviewsToDisplay}</p></div>
+        : null}
+        {singleTick ? (
+        <div>
+            <p>Date Ticked: {singleTick.date}</p>
+            <p>Style: {singleTick.styleTick}</p>
+            <p>Notes: {singleTick.notes}</p>
+        </div>
+        ) : null}
+
         <Link to={`/routes/${id}/edit`}>
           <button>Edit This Route</button>
         </Link>
@@ -87,7 +119,7 @@ function SingleRoute({climber}){
   ))}
 </ul>
     </div>
-  );
+    );
 }
 
 export default SingleRoute;
