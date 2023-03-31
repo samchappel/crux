@@ -54,7 +54,7 @@ function SingleRoute({climber}){
               });
           }
 
-    const { name, styleRoute, grade, image, location, reviews, routeId} = route
+          const { name, style, grade, image, location, reviews, routeId} = route
  
     const reviewsToDisplay = reviews.map((review)=> {
         console.log(review.id)
@@ -95,11 +95,11 @@ function SingleRoute({climber}){
         </div>
         <div className="single-center">
         <h3 className="single-name">{name}</h3>
-        <p>Style: {styleRoute}</p>
+        <p>Style: {route.style}</p>
         <p>Grade: {grade}</p>
         <p>Location: {location.place} </p>
 
-        {reviews === true ? <div><p>Reviews:</p>
+        {/* {reviews === true ? <div><p>Reviews:</p>
         <p>{reviewsToDisplay}</p></div>
         : null}
         {singleTick ? (
@@ -108,7 +108,7 @@ function SingleRoute({climber}){
             <p>Style: {singleTick.styleTick}</p>
             <p>Notes: {singleTick.notes}</p>
         </div>
-        ) : null}
+        ) : null} */}
 
         <Link to={`/routes/${id}`}>
           <button>Edit This Route</button>
