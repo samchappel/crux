@@ -9,6 +9,7 @@ import Profile from "./Profile";
 import LogIn from "./LogIn";
 import SingleRoute from "./SingleRoute"
 import RouteEdit from "./RouteEdit"
+import AddReview from "./AddReview"
 import ReviewEdit from "./ReviewEdit"
 
 function App() {
@@ -62,6 +63,8 @@ function App() {
         <Route path="/routes/:id/edit">
           <RouteEdit climber={climber}/>
         </Route>
+        <Route path="/routes/:id/addreview">
+          <AddReview climber={climber}/>
         <Route path="/reviews/:id/edit">
           <ReviewEdit climber={climber}/>
         </Route>

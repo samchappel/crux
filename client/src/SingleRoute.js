@@ -97,6 +97,11 @@ function SingleRoute({climber}){
         <Link to={`/routes/${id}/edit`}>
           <button>Edit This Route</button>
         </Link>
+        <div>
+        <Link to={`/routes/${id}/addreview`}>
+          <button>Add Review</button>
+        </Link>
+        </div>
         <br />
         <button onClick={() => history.goBack()}>Back</button>
         </div>
