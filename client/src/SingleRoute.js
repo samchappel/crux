@@ -11,7 +11,6 @@ function SingleRoute({climber}){
     const{ id } = useParams()
     
     useEffect(() => {
-        console.log('in useEffect');
         Promise.all([
             fetch(`/routes/${id}`).then((r) => r.json()),
             fetch(`/ticks`).then((r) => r.json()),
@@ -38,8 +37,9 @@ function SingleRoute({climber}){
         
         return `${month} ${day}, ${year}`;
         };
+
     const { name, styleRoute, grade, image, location, reviews, routeId} = route
-    console.log(reviews)
+ 
     const reviewsToDisplay = reviews.map((review)=> {
         console.log(review.id)
         console.log(review.created_at)
@@ -55,6 +55,7 @@ function SingleRoute({climber}){
         ) : null}
         </div>
     });
+
     console.log(ticks)
     const singleTick = ticks.filter((tick)=> climber && climber.id === tick.climber_id)
     console.log(singleTick)
@@ -76,14 +77,12 @@ function SingleRoute({climber}){
         <div className="single-nontext">
             <img className="single-image" src={image} alt={name} />
         </div>
-        <div className="tick">
-            <Link to={`/routes/${id}/ticks`}><p className="linkToTick">Add Tick</p></Link>
-        </div>
         <div className="single-center">
         <h3 className="single-name">{name}</h3>
         <p>Style: {styleRoute}</p>
         <p>Grade: {grade}</p>
         <p>Location: {location.place} </p>
+
         {reviews === true ? <div><p>Reviews:</p>
         <p>{reviewsToDisplay}</p></div>
         : null}
@@ -94,12 +93,31 @@ function SingleRoute({climber}){
             <p>Notes: {singleTick.notes}</p>
         </div>
         ) : null}
+
         <Link to={`/routes/${id}/edit`}>
-        <button>Edit This Route</button>
+          <button>Edit This Route</button>
         </Link>
         <br />
         <button onClick={() => history.goBack()}>Back</button>
         </div>
+        <ul className="review-cards">
+  {reviews.map((review) => (
+    <li key={review.id} className="review-card">
+      <div className="review-card__content">
+        <h4 className="review-card__title">Review by Climber {review.climber_id}</h4>
+        <p className="review-card__rating">Star Rating: {review.star_rating}</p>
+        <p className="review-card__rating">Safety Rating: {review.safety_rating}</p>
+        <p className="review-card__rating">Quality Rating: {review.quality_rating}</p>
+        <p className="review-card__comment">Comment: {review.comment}</p>
+        {climber.id === review.climber_id ? (
+        <Link to={`/review/${review.id}/edit`}>
+            <button>Edit This Review</button>
+        </Link>
+        ) : null}
+      </div>
+    </li>
+  ))}
+</ul>
     </div>
     );
 }
