@@ -90,7 +90,7 @@ function LogIn() {
 
       if (response.ok) {
         const climber = await response.json();
-        localStorage.setItem('climber', JSON.stringify(climber));
+        sessionStorage.setItem('climber', JSON.stringify(climber));
         //need to update this from localstorage
         history.push('/profile');
       } else {

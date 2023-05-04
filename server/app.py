@@ -266,6 +266,7 @@ class Login(Resource):
     def post(self):
         try:
             climber = Climber.query.filter_by(username=request.get_json()['username']).first()
+            print("climber:", climber.to_dict())
             if climber.authenticate(request.get_json()['password']):
                 session['climber_id'] = climber.id
                 response = make_response(
@@ -273,7 +274,8 @@ class Login(Resource):
                     200
                 )
                 return response
-        except:
+        except Exception as e:
+            print(str(e))
             abort(401, "Incorrect Username or Password")
 
 api.add_resource(Login, '/login')
