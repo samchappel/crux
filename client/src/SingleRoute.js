@@ -98,20 +98,18 @@ function SingleRoute({climber}){
             );
           });
 
-    console.log(reviews)
     const singleTick = ticks.filter((tick)=> climber && climber.id === tick.climber_id)
 
     //const {climber_id, route_id, styleTick, date, notes } = tick
     // console.log(climber.id)
     // console.log(climber_id)
     // const addTick =
-    // singleTick ? (
-    //     <div>
-    //         <p>Date Ticked: {singleTick.date}</p>
-    //         <p>Style: {singleTick.styleTick}</p>
-    //         <p>Notes: {singleTick.notes}</p>
-    //     </div>
-    // ) : null;
+    const ticksToDisplay = singleTick.map((tick) => (
+      <div key={tick.id}>
+          <p>Date Ticked: {tick.date}</p>
+          <p>Style: {tick.style}</p>
+          <p>Notes: {tick.notes}</p>
+      </div>))
 
     let tickOptions;
     if (route.style === "sport" || route.style === "trad") {
@@ -244,14 +242,22 @@ function SingleRoute({climber}){
 } else {
   tickOptions = null;
 }
+console.log(route.style)
 
 function handleTickSubmit(e) {
     e.preventDefault();
+    let finalTickStyle;
+    if (route.style === "sport" || route.style === "trad") {
+      finalTickStyle = leadStyle === "lead" ? leadSubstyle : leadStyle;
+    } else {
+      finalTickStyle = boulderStyle;
+    }
+
     const newTick = {
       climber_id: climber.id,
       route_id: route.id,
       date: tickDate,
-      style: tickStyle,
+      style: finalTickStyle,
       notes: tickNotes,
     };
     fetch("/ticks", {
@@ -281,7 +287,7 @@ function handleTickSubmit(e) {
         <p>Style: {route.style}</p>
         <p>Grade: {grade}</p>
         <p>Location: {location.place} </p>
-
+        {ticksToDisplay}
         {/* {reviews === true ? <div><p>Reviews:</p>
         <p>{reviewsToDisplay}</p></div>
         : null}
