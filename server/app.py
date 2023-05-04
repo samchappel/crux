@@ -45,7 +45,7 @@ class LocationByID(Resource):
             abort(404, "location not found")
         location_dict = location.to_dict()
         response = make_response(
-            location_dict,
+            location_dict, 
             200
         )
         return response
@@ -73,6 +73,20 @@ class RouteByID(Resource):
             200
         )
         return response
+    
+    def patch(self, id):
+        route = Route.query.filter_by(id=id).first()
+        if not route:
+            return make_response({'error': 'Route not found'}, 404)
+        data = request.get_json()
+        allowed_attrs = ['name', 'style', 'grade', 'image']
+        for attr in data:
+            if attr in allowed_attrs:
+                setattr(route, attr, data[attr])
+        db.session.add(route)
+        db.session.commit()
+
+        return make_response(route.to_dict(), 202)
         
 api.add_resource(RouteByID, '/routes/<int:id>')
 

@@ -23,12 +23,14 @@ function RouteEdit() { //{climber} add
                 setIsLoaded(true);
             })
         }, [id])
+        console.log(route)
+        console.log(route.id)
 
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: route,
         onSubmit: (values) => {
-            fetch(`/routes/${id}`, {
+            fetch(`/routes/${route.id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -39,7 +41,7 @@ function RouteEdit() { //{climber} add
                 if (res.ok) {
                     res.json().then(data => {
                         setRoute(data)
-                        history.push('/routes')
+                        history.push(`/routes/${route.id}`)
                     })
                 } else {
                     res.json().then(error => console.log(error.message))
