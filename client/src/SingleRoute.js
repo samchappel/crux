@@ -59,7 +59,12 @@ function SingleRoute({climber}){
             })
               .then((response) => {
                 if (response.ok) {
-                  // Delete successful, do something if necessary
+                  setRoute((prevState) => {
+                    return {
+                      ...prevState,
+                      reviews: prevState.reviews.filter((review) => review.id !== id),
+                    };
+                  });
                 } else {
                   throw new Error("Failed to delete review");
                 }
