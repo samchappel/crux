@@ -93,9 +93,8 @@ function SingleRoute({climber}){
             );
           });
 
-    console.log(ticks)
+    console.log(reviews)
     const singleTick = ticks.filter((tick)=> climber && climber.id === tick.climber_id)
-    console.log(singleTick)
 
     //const {climber_id, route_id, styleTick, date, notes } = tick
     // console.log(climber.id)

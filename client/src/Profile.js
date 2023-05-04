@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { withRouter, Link } from "react-router-dom";
 
-function Profile({ climber, history }) {
+function Profile({ history }) {
   const [ticks, setTicks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [routes, setRoutes] = useState([]);
   const [reviews, setReviews] = useState([]);
-
+  const climber = JSON.parse(sessionStorage.getItem("climber"));
+  console.log(sessionStorage.getItem("climber"))
   useEffect(() => {
     Promise.all([
       fetch('/ticks').then((res) => res.json()),

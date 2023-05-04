@@ -81,7 +81,7 @@ class Review(db.Model, SerializerMixin):
     safety_rating = db.Column(db.Integer, nullable=False)
     quality_rating = db.Column(db.Integer, nullable=False)
     comment = db.Column(db.String)
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    #created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
     climber_id = db.Column(db.Integer, db.ForeignKey('climbers.id'))
     route_id = db.Column(db.Integer, db.ForeignKey('routes.id'))
@@ -172,7 +172,7 @@ class Climber(db.Model, SerializerMixin):
         return value
     
     def __repr__(self):
-        return f'CLIMBER: ID: {self.id}, Name {self.first_name}, Username: {self.username}, Admin: {self.admin}'
+        return f'CLIMBER: ID: {self.id}, Name: {self.first_name}, Username: {self.username}, Admin: {self.admin}'
 
 class Tick(db.Model, SerializerMixin):
     __tablename__ = 'ticks'

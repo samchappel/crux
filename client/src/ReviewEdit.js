@@ -39,7 +39,7 @@ function ReviewEdit({climber}) { //{climber} add
                 if (res.ok) {
                     res.json().then(data => {
                         setReview(data)
-                        history.push('/reviews')
+                        history.push(`/routes/${review.route_id}`)
                     })
                 } else {
                     res.json().then(error => console.log(error.message))
